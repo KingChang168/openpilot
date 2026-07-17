@@ -1,4 +1,6 @@
-## ✍ To install this fork use installer.comma.ai/KingChang168/c4 (Comma Four compatible)
+## ✍ Stable installation
+
+Use [installer.comma.ai/KingChang168/main](https://installer.comma.ai/KingChang168/main) for the known-good stable branch (Comma Four compatible).
 
 ![](https://user-images.githubusercontent.com/47793918/233812617-beab2e71-57b9-479e-8bff-c3931347ca40.png)
 
@@ -18,10 +20,58 @@ First, check out this list of items you'll need to [get started](https://communi
 ## Installation
 Next, refer to the sunnypilot community forum for [installation instructions](https://community.sunnypilot.ai/t/read-before-installing-sunnypilot/254), as well as a complete list of [Recommended Branch Installations](https://community.sunnypilot.ai/t/recommended-branch-installations/235).
 
+## Branch layout and validation
+
+### `main` — stable
+
+- `main` is the known-good stable version, based on the original `backup/c4-op-11.1` branch.
+- It currently represents the OP/SP 11.1 usage state.
+- Only changes that have completed C4 and on-car validation may be merged into `main`.
+
+Stable installation: [installer.comma.ai/KingChang168/main](https://installer.comma.ai/KingChang168/main).
+
+### `test/sp-11.2` — SP/openpilot 11.2 integration testing
+
+- This branch is for SP/openpilot 11.2 integration testing and has not completed full validation.
+- It must not be treated as a stable or emergency fallback version.
+- **Experimental / Unverified / Not known-good:** installer support for branch names containing `/` has not been confirmed. Do not infer an installer URL; use the branch name directly until that support is verified.
+
+### Development flow
+
+```text
+main
+  -> feature/<task-name>
+  -> Codex changes
+  -> local basic checks
+  -> C4 testing
+  -> on-car testing
+  -> regression test
+  -> Pull Request
+  -> main
+```
+
+### SP/openpilot upgrade flow
+
+```text
+main
+  -> test/sp-11.2
+  -> fixes and integration
+  -> C4 testing
+  -> on-car validation
+  -> open a Pull Request to main only after stability is confirmed
+```
+
+### Recommended branch names
+
+- `feature/<task-name>`
+- `fix/<issue-name>`
+- `test/<version>`
+- `docs/<task-name>`
+
 ## 🎆 Pull Requests
 We welcome both pull requests and issues on GitHub. Bug fixes are encouraged.
 
-Pull requests should be against the most current `master` branch.
+Pull requests for stable changes should target the current `main` branch.
 
 ## 📊 User Data
 
