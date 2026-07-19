@@ -103,6 +103,7 @@ class FontWeight(StrEnum):
   SEMI_BOLD = "Inter-SemiBold.fnt"
   UNIFONT = "unifont.fnt"
   TAIWAN_SANS_UI = "C4TaiwanSans-Regular.fnt"
+  SOURCE_HAN_SANS_TC = "C4SourceHanSansTC-Regular.fnt"
   AUDIOWIDE = "Audiowide-Regular.fnt"
 
   # Small UI fonts
@@ -115,6 +116,10 @@ def font_fallback(font: rl.Font, text: str = "") -> rl.Font:
   """Use a language-appropriate font only when text needs non-ASCII glyphs."""
   if multilang.requires_unifont() and any(ord(char) > 0x7F for char in text):
     if multilang.language == "zh-CHT":
+      # Use Source Han Sans when its generated C4 atlas is present. Until the
+      # atlas is built, keep the known-good IBM Plex fallback to avoid missing glyphs.
+      if FONT_DIR.joinpath(FontWeight.SOURCE_HAN_SANS_TC).is_file():
+        return gui_app.font(FontWeight.SOURCE_HAN_SANS_TC)
       return gui_app.font(FontWeight.TAIWAN_SANS_UI)
     return gui_app.font(FontWeight.UNIFONT)
   return font
