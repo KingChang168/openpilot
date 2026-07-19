@@ -310,9 +310,10 @@ class Device(DeviceSP):
       brightness = DeviceSP.set_onroad_brightness(ui_state, self._awake, brightness)
 
     # These C4 settings predate the sunnypilot brightness controls. Keep Dark
-    # Mode authoritative so a manual onroad brightness setting cannot undo it.
+    # Mode authoritative so a manual onroad brightness setting cannot undo it,
+    # but retain a visible backlight after the screen is woken.
     if ui_state.started and ui_state.dark_mode:
-      brightness = min(brightness, 1)
+      brightness = min(brightness, 10)
 
     if not self._awake:
       brightness = 0
@@ -327,7 +328,8 @@ class Device(DeviceSP):
     ignition_just_turned_off = not ui_state.ignition and self._ignition
     self._ignition = ui_state.ignition
 
-    if ignition_just_turned_off or any(ev.left_down for ev in gui_app.mouse_events):
+    touch_active = any(ev.left_pressed or ev.left_down for ev in gui_app.mouse_events)
+    if ignition_just_turned_off or touch_active:
       if gui_app.sunnypilot_ui():
         DeviceSP.wake_from_dimmed_onroad_brightness(ui_state, gui_app.mouse_events)
 
