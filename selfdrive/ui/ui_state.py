@@ -309,6 +309,11 @@ class Device(DeviceSP):
     if gui_app.sunnypilot_ui():
       brightness = DeviceSP.set_onroad_brightness(ui_state, self._awake, brightness)
 
+    # These C4 settings predate the sunnypilot brightness controls. Keep Dark
+    # Mode authoritative so a manual onroad brightness setting cannot undo it.
+    if ui_state.started and ui_state.dark_mode:
+      brightness = min(brightness, 1)
+
     if not self._awake:
       brightness = 0
 
@@ -334,7 +339,7 @@ class Device(DeviceSP):
         callback()
     self._prev_timed_out = interaction_timeout
 
-    self._set_awake(ui_state.ignition or not interaction_timeout or PC)
+    self._set_awake((ui_state.ignition and not ui_state.onroad_screen_timeout) or not interaction_timeout or PC)
 
   def _set_awake(self, on: bool):
     if on != self._awake:
