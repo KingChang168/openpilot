@@ -845,6 +845,158 @@ msgstr "取得最新型號"
 msgid "Fingerprinted automatically"
 msgstr "自動採集指紋"
 
+#: system_ui\tici_setup.py
+msgid "WARNING: Low Voltage"
+msgstr "警告：低電壓"
+
+#: system_ui\tici_setup.py
+msgid "Power your device in a car with a harness or proceed at your own risk."
+msgstr "請使用線束在車內為裝置供電，或自行承擔風險。"
+
+#: system_ui\tici_setup.py
+msgid "Continue"
+msgstr "繼續"
+
+#: system_ui\tici_setup.py
+msgid "Getting Started"
+msgstr "開始使用"
+
+#: system_ui\tici_setup.py
+msgid "Before we get on the road, let's finish installation and cover some details."
+msgstr "上路前，請完成安裝並了解一些詳細資訊。"
+
+#: system_ui\tici_setup.py
+msgid "Custom Software"
+msgstr "自訂軟體"
+
+#: system_ui\tici_setup.py
+msgid "Choose Software to Use"
+msgstr "選擇要使用的軟體"
+
+#: system_ui\tici_setup.py
+msgid "Reboot device"
+msgstr "重新啟動裝置"
+
+#: system_ui\tici_setup.py
+msgid "Start over"
+msgstr "重新開始"
+
+#: system_ui\tici_setup.py
+msgid "Download Failed"
+msgstr "下載失敗"
+
+#: system_ui\tici_setup.py
+msgid "Waiting for internet"
+msgstr "等待網路連線"
+
+#: system_ui\tici_setup.py
+msgid "Connect to Wi-Fi"
+msgstr "連接 Wi-Fi"
+
+#: system_ui\tici_setup.py
+msgid "Scroll to continue"
+msgstr "向下捲動以繼續"
+
+#: system_ui\tici_setup.py
+msgid "WARNING: Custom Software"
+msgstr "警告：自訂軟體"
+
+#: system_ui\tici_setup.py
+msgid "Use caution when installing third-party software."
+msgstr "安裝第三方軟體時請務必小心。"
+
+#: system_ui\tici_setup.py
+msgid "⚠️ It has not been tested by comma."
+msgstr "⚠️ 此軟體尚未經 comma 測試。"
+
+#: system_ui\tici_setup.py
+msgid "⚠️ It may not comply with relevant safety standards."
+msgstr "⚠️ 可能不符合相關安全標準。"
+
+#: system_ui\tici_setup.py
+msgid "⚠️ It may cause damage to your device and/or vehicle."
+msgstr "⚠️ 可能造成裝置及／或車輛損壞。"
+
+#: system_ui\tici_setup.py
+msgid "If you'd like to proceed, use https://flash.comma.ai to restore your device to a factory state later."
+msgstr "如果要繼續，之後可使用 https://flash.comma.ai 將裝置還原為出廠狀態。"
+
+#: system_ui\tici_setup.py
+msgid "Downloading..."
+msgstr "下載中..."
+
+#: system_ui\tici_setup.py
+msgid "Continue without Wi-Fi"
+msgstr "沒有 Wi-Fi 仍要繼續"
+
+#: system_ui\tici_setup.py
+msgid "Enter URL"
+msgstr "輸入網址"
+
+#: system_ui\tici_setup.py
+msgid "for Custom Software"
+msgstr "用於自訂軟體"
+
+#: system_ui\tici_setup.py
+msgid "No custom software found at this URL."
+msgstr "此網址找不到自訂軟體。"
+
+#: system_ui\tici_setup.py
+msgid "Ensure the entered URL is valid, and the device's internet connection is good."
+msgstr "請確認輸入的網址有效，且裝置網路連線正常。"
+
+#: system_ui\tici_updater.py
+msgid "Loading..."
+msgstr "載入中..."
+
+#: system_ui\tici_updater.py
+msgid "Install"
+msgstr "安裝"
+
+#: system_ui\tici_updater.py
+msgid "Update Required"
+msgstr "需要更新"
+
+#: system_ui\tici_updater.py
+msgid "System Update"
+msgstr "系統更新"
+
+#: system_ui\tici_updater.py
+msgid "An operating system update is required. Connect your device to Wi-Fi for the fastest update experience. The download size is approximately 1GB."
+msgstr "需要更新作業系統。連接 Wi-Fi 可獲得最快的更新體驗。下載大小約為 1GB。"
+
+#: system_ui\tici_updater.py
+msgid "Update failed"
+msgstr "更新失敗"
+
+#: system_ui\tici_setup.py
+msgid "Setup"
+msgstr "設定"
+
+#: system_ui\tici_reset.py
+msgid "System Reset"
+msgstr "系統重設"
+
+#: system_ui\tici_reset.py
+msgid "Are you sure you want to reset your device?"
+msgstr "確定要重設裝置嗎？"
+
+#: system_ui\tici_reset.py
+msgid "Resetting device...\nThis may take up to a minute."
+msgstr "正在重設裝置...\n這可能需要一分鐘。"
+
+#: system_ui\tici_reset.py
+msgid "Reset failed. Reboot to try again."
+msgstr "重設失敗。請重新啟動後再試。"
+
+#: system_ui\tici_reset.py
+msgid "Unable to mount data partition. Partition may be corrupted. Press confirm to erase and reset your device."
+msgstr "無法掛載資料分割區。分割區可能已損毀。按下確認以清除資料並重設裝置。"
+
+#: system_ui\tici_reset.py
+msgid "System reset triggered. Press confirm to erase all content and settings. Press cancel to resume boot."
+msgstr "已觸發系統重設。按下確認以清除所有內容與設定，按下取消以繼續啟動。"
+
 #: selfdrive_ui\widgets\setup.py
 msgid "Finish Setup"
 msgstr "完成設定"
