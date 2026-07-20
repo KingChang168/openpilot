@@ -1,6 +1,6 @@
 import math
 
-from cereal import log
+from openpilot.cereal import log
 from openpilot.common.pid import MultiplicativeUnwindPID
 from openpilot.selfdrive.controls.lib.latcontrol import LatControl
 from openpilot.selfdrive.controls.lib.drive_helpers import MAX_CURVATURE

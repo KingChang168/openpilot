@@ -8,7 +8,7 @@ See the LICENSE.md file in the root directory for more details.
 from collections import deque
 from statistics import median
 
-from cereal import messaging, custom
+from openpilot.cereal import messaging, custom
 
 from openpilot.common.params import Params
 from openpilot.common.realtime import DT_MDL
@@ -68,7 +68,7 @@ class E2EAlertsHelper:
 
     model_x = sm['modelV2'].position.x
     max_idx = len(model_x) - 1
-    self.has_lead = sm['radarState'].leadOne.status
+    self.has_lead = sm['radarState'].leadOne.present
     lead_dRel = sm['radarState'].leadOne.dRel
     lead_vRel = sm['radarState'].leadOne.vRel
 
