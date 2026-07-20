@@ -1,4 +1,4 @@
-## ✍ To install this fork use installer.comma.ai/KingChang168/c4 (Comma Four compatible)
+## ✍ To install this fork use installer.comma.ai/KingChang168/main (Comma Four compatible)
 
 ![](https://user-images.githubusercontent.com/47793918/233812617-beab2e71-57b9-479e-8bff-c3931347ca40.png)
 
@@ -40,7 +40,7 @@ sunnypilot is released under the [MIT License](LICENSE). This repository include
 
 The original openpilot license notice, including comma.ai’s indemnification and alpha software disclaimer, is reproduced below as required:
 
-> openpilot is released under the MIT license. Some parts of the software are released under other licenses as specified.
+> openpilot is released under the MIT license. Some parts of the software are released under other licenses.
 >
 > Any user of this software shall indemnify and hold harmless Comma.ai, Inc. and its directors, officers, employees, agents, stockholders, affiliates, subcontractors and customers from and against all allegations, claims, actions, suits, demands, damages, liabilities, obligations, losses, settlements, judgments, costs and expenses (including without limitation attorneys’ fees and costs) which arise out of, relate to or result from any use of this software by user.
 >
@@ -67,7 +67,7 @@ By becoming a sponsor, you will gain access to exclusive content, early access t
 <h3>PayPal</h3>
 
 <a href="https://paypal.me/sunnyhaibin0850" target="_blank">
-<img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="PayPal this" title="PayPal - The safer, easier way to pay online!" border="0" />
+<img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="PayPal this" title="PayPal - The safer, easier way to pay online" border="0" />
 </a>
 <br></br>
 
