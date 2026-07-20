@@ -1,4 +1,5 @@
 import os
+import sys
 import capnp
 from importlib.resources import as_file, files
 
@@ -9,3 +10,8 @@ with as_file(files("openpilot.cereal")) as fspath, as_file(files("opendbc")) as 
   opendbc_import_path = os.path.join(os.path.realpath(opendbc_path.as_posix()), 'car')
   log = capnp.load(os.path.join(CEREAL_PATH, "log.capnp"), imports=[opendbc_import_path])
   custom = capnp.load(os.path.join(CEREAL_PATH, "custom.capnp"), imports=[opendbc_import_path])
+
+# Keep the legacy ``cereal.car`` import used by opendbc compatible with the
+# nested ``openpilot.cereal`` package without loading car.capnp a second time.
+car = log.Car
+sys.modules.setdefault("cereal", sys.modules[__name__])
