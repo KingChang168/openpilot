@@ -36,7 +36,7 @@ class SettingsLayout(NavScroller):
     self._device_btn = device_btn
 
     software_panel = SoftwareLayoutMici()
-    software_btn = SettingsBigButton("software", "", gui_app.texture("icons_mici/settings/software.png", 64, 75))
+    software_btn = SettingsBigButton(tr("software"), "", gui_app.texture("icons_mici/settings/software.png", 64, 75))
     software_btn.set_click_callback(lambda: gui_app.push_widget(software_panel))
 
     developer_panel = DeveloperLayoutMici()
