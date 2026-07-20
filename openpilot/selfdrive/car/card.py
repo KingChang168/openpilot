@@ -123,6 +123,10 @@ class Car:
       self.RI = RI
 
     self.CP.alternativeExperience = 0
+    # Allow car interfaces to perform pre-initialization checks, such as
+    # putting the car into dashcam mode when radar communication cannot be disabled.
+    self.CI.pre_init(self.CP, self.CP_SP, *self.can_callbacks)
+
     # mads
     set_alternative_experience(self.CP, self.CP_SP, self.params)
     set_car_specific_params(self.CP, self.CP_SP, self.params)
