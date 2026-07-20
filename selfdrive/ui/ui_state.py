@@ -309,12 +309,6 @@ class Device(DeviceSP):
     if gui_app.sunnypilot_ui():
       brightness = DeviceSP.set_onroad_brightness(ui_state, self._awake, brightness)
 
-    # These C4 settings predate the sunnypilot brightness controls. Keep Dark
-    # Mode authoritative so a manual onroad brightness setting cannot undo it,
-    # but retain a visible backlight after the screen is woken.
-    if ui_state.started and ui_state.dark_mode:
-      brightness = min(brightness, 10)
-
     if not self._awake:
       brightness = 0
 
