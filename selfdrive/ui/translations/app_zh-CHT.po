@@ -2654,3 +2654,11 @@ msgstr "解除安裝 sunnypilot"
 #: selfdrive_ui\mici\layouts\settings\software.py
 msgid "updater failed\nto respond"
 msgstr "更新程式\n沒有回應"
+
+#: selfdrive_ui\mici\layouts\settings\network\network_layout.py
+msgid "enable roaming"
+msgstr "允許數據漫遊"
+
+#: selfdrive_ui\mici\layouts\settings\network\network_layout.py
+msgid "cellular metered"
+msgstr "行動網路計量付費"
