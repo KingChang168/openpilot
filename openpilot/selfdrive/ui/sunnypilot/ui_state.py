@@ -9,6 +9,7 @@ from enum import Enum
 from openpilot.cereal import messaging, log, custom
 from opendbc.car.structs import car
 from openpilot.common.params import Params
+from openpilot.selfdrive.car.steer_control import is_curvature_steer_control
 from openpilot.selfdrive.ui.sunnypilot.layouts.settings.display import OnroadBrightness
 from openpilot.sunnypilot.sunnylink.sunnylink_state import SunnylinkState
 from openpilot.system.ui.lib.application import gui_app
@@ -184,8 +185,9 @@ class UIStateSP:
         self.params.put_bool("EnforceTorqueControl", False, block=True)
         self.params.put_bool("NeuralNetworkLateralControl", False, block=True)
 
-      # Angle steering: no torque-based lateral controls
-      if CP.steerControlType == car.CarParams.SteerControlType.angle:
+      # Angle and curvature steering: no torque-based lateral controls
+      if (CP.steerControlType == car.CarParams.SteerControlType.angle or
+          is_curvature_steer_control(CP.steerControlType)):
         self.params.remove("EnforceTorqueControl")
         self.params.remove("NeuralNetworkLateralControl")
 

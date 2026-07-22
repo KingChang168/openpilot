@@ -7,6 +7,7 @@ See the LICENSE.md file in the root directory for more details.
 from opendbc.car.structs import car
 from enum import IntEnum
 
+from openpilot.selfdrive.car.steer_control import is_curvature_steer_control
 from openpilot.selfdrive.ui.ui_state import ui_state
 from openpilot.system.ui.lib.multilang import tr
 from openpilot.system.ui.sunnypilot.widgets.list_view import toggle_item_sp, simple_button_item_sp, option_item_sp, LineSeparatorSP
@@ -120,7 +121,9 @@ class SteeringLayout(Widget):
   def _update_state(self):
     super()._update_state()
 
-    torque_allowed = ui_state.CP is not None and ui_state.CP.steerControlType != car.CarParams.SteerControlType.angle
+    torque_allowed = (ui_state.CP is not None and
+                      ui_state.CP.steerControlType != car.CarParams.SteerControlType.angle and
+                      not is_curvature_steer_control(ui_state.CP.steerControlType))
     if ui_state.CP is not None:
       mads_main_desc = self._mads_limited_desc if self._mads_settings_layout._mads_limited_settings() else self._mads_full_desc
       self._mads_toggle.set_description(f"<b>{mads_main_desc}</b><br><br>{self._mads_base_desc}")
