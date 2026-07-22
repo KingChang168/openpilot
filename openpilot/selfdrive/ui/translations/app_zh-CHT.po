@@ -2127,35 +2127,35 @@ msgstr "VW MEB：顯示電池詳細資訊"
 
 #: selfdrive_ui\layouts\settings\ictoggles.py
 msgid "VW: Disable Car Steer Alert Chime"
-msgstr "VW：停用原車轉向警示音"
+msgstr "VW：\n停用原車轉向警示音"
 
 #: selfdrive_ui\layouts\settings\ictoggles.py
 msgid "VW: Force RHD for BSM"
-msgstr "VW：強制套用右駕 BSM 設定"
+msgstr "VW：\n強制套用右駕 BSM 設定"
 
 #: selfdrive_ui\layouts\settings\ictoggles.py
 msgid "VW: Lateral Correction (Recommended)"
-msgstr "VW：橫向修正（建議）"
+msgstr "VW：\n橫向修正（建議）"
 
 #: selfdrive_ui\layouts\settings\ictoggles.py
 msgid "VW: Longitudinal Comfort Mode"
-msgstr "VW：縱向舒適模式"
+msgstr "VW：\n縱向舒適模式"
 
 #: selfdrive_ui\layouts\settings\ictoggles.py
 msgid "VW: Predicative - Reaction to Curves"
-msgstr "VW：預測式彎道反應"
+msgstr "VW：\n預測式彎道反應"
 
 #: selfdrive_ui\layouts\settings\ictoggles.py
 msgid "VW: Predicative - Reaction to Speed Limits"
-msgstr "VW：預測式速限反應"
+msgstr "VW：\n預測式速限反應"
 
 #: selfdrive_ui\layouts\settings\ictoggles.py
 msgid "VW: Predicative Speed Limit (pACC)"
-msgstr "VW：預測式速限（pACC）"
+msgstr "VW：\n預測式速限（pACC）"
 
 #: selfdrive_ui\layouts\settings\ictoggles.py
 msgid "VW: Speed Limit Control"
-msgstr "VW：速限控制"
+msgstr "VW：\n速限控制"
 
 #: selfdrive_ui\sunnypilot\layouts\settings\settings.py
 #: selfdrive_ui\sunnypilot\layouts\settings\vehicle\platform_selector.py
