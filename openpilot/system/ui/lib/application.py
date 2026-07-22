@@ -91,6 +91,7 @@ DEFAULT_TEXT_COLOR = rl.Color(255, 255, 255, int(255 * 0.9))
 # Qt draws fonts accounting for ascent/descent differently, so compensate to match old styles
 # The real scales for the fonts below range from 1.212 to 1.266
 FONT_SCALE = 1.242 if BIG_UI else 1.16
+ZH_CHT_TEXT_SCALE = 1.10
 
 ASSETS_DIR = files("openpilot.selfdrive").joinpath("assets")
 FONT_DIR = ASSETS_DIR.joinpath("fonts")
@@ -109,6 +110,13 @@ class FontWeight(StrEnum):
   DISPLAY_REGULAR = "Inter-Regular.fnt"
   ROMAN = "Inter-Regular.fnt"
   DISPLAY = "Inter-Bold.fnt"
+
+
+def text_size_scale(text: str = "") -> float:
+  """Return the render scale for the active language and text."""
+  if multilang.language == "zh-CHT" and any(ord(char) > 0x7F for char in text):
+    return FONT_SCALE * ZH_CHT_TEXT_SCALE
+  return FONT_SCALE
 
 
 def font_fallback(font: rl.Font, text: str = "") -> rl.Font:
@@ -721,7 +729,7 @@ class GuiApplication(GuiApplicationExt):
 
     def _draw_text_ex_scaled(font, text, position, font_size, spacing, tint):
       font = font_fallback(font, text)
-      return rl._orig_draw_text_ex(font, text, position, font_size * FONT_SCALE, spacing, tint)
+      return rl._orig_draw_text_ex(font, text, position, font_size * text_size_scale(text), spacing, tint)
 
     rl.draw_text_ex = _draw_text_ex_scaled
 
