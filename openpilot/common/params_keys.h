@@ -136,7 +136,6 @@ inline static std::unordered_map<std::string, ParamKeyAttributes> keys = {
 	
 	// --- infiniteCable params --- //
 	{"DisableScreenTimer", {PERSISTENT, BOOL}},
-	{"DarkMode", {PERSISTENT, BOOL}},
 	{"EnableCurvatureController", {PERSISTENT, BOOL, "1"}},
 	{"EnableCurvatureD", {PERSISTENT, BOOL, "0"}},
 	{"CurvatureDDebugData", {PERSISTENT, BOOL, "0"}},
