@@ -149,6 +149,7 @@ inline static std::unordered_map<std::string, ParamKeyAttributes> keys = {
 	{"ShowDynamicSteeringLearnerGraph", {PERSISTENT, BOOL}},
 	{"ForceRHDForBSM", {PERSISTENT, BOOL}},
 	{"DisableCarSteerAlerts", {PERSISTENT, BOOL}},
+	{"HudMode", {PERSISTENT, BOOL}},
 	{"ShowAccelBar", {PERSISTENT, BOOL}},
 	{"LiveCurvatureParameters", {PERSISTENT | DONT_LOG, BYTES}},
 

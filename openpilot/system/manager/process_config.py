@@ -65,6 +65,9 @@ def only_onroad(started: bool, params: Params, CP: car.CarParams) -> bool:
 def curvatured_enabled(started: bool, params: Params, CP: car.CarParams) -> bool:
   return only_onroad(started, params, CP) and params.get_bool("EnableCurvatureD")
 
+def tdx_enabled(started: bool, params: Params, CP: car.CarParams) -> bool:
+  return only_onroad(started, params, CP) and params.get_bool("HudMode")
+
 def only_offroad(started: bool, params: Params, CP: car.CarParams) -> bool:
   return not started
 
@@ -189,7 +192,7 @@ procs += [
   # mapd
   NativeProcess("mapd", Paths.mapd_root(), ["bash", "-c", f"{MAPD_PATH} > /dev/null 2>&1"], mapd_ready),
   PythonProcess("mapd_manager", "openpilot.sunnypilot.mapd.mapd_manager", always_run),
-  PythonProcess("tdxd", "openpilot.sunnypilot.tdx.tdxd", only_onroad),
+  PythonProcess("tdxd", "openpilot.sunnypilot.tdx.tdxd", tdx_enabled),
 
   # locationd
   NativeProcess("locationd_llk", "openpilot/sunnypilot/selfdrive/locationd", ["./locationd"], only_onroad),
