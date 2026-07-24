@@ -24,6 +24,7 @@ class ICTogglesLayoutMici(NavScroller):
     enable_accel_bar            = BigParamControl("Enable Accel Bar", "ShowAccelBar")
     enable_curvatured           = BigParamControl("Enable Dynamic Steering Learner", "EnableCurvatureD")
     show_curvatured_graph       = BigParamControl("Show Dynamic Steering Learner Graph", "ShowDynamicSteeringLearnerGraph")
+    hud_mode                    = BigParamControl("HUD mode", "HudMode")
     
     self._scroller.add_widgets([
       enable_curvature_correction,
@@ -39,6 +40,7 @@ class ICTogglesLayoutMici(NavScroller):
       enable_accel_bar,
       enable_curvatured,
       show_curvatured_graph,
+      hud_mode,
     ])
 
     # Toggle lists
@@ -56,6 +58,7 @@ class ICTogglesLayoutMici(NavScroller):
       ("ShowAccelBar", enable_accel_bar),
       ("EnableCurvatureD", enable_curvatured),
       ("ShowDynamicSteeringLearnerGraph", show_curvatured_graph),
+      ("HudMode", hud_mode),
     )
 
     enable_curvatured.set_enabled(lambda: ui_state.is_offroad())

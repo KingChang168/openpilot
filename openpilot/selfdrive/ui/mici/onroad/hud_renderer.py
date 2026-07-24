@@ -1,4 +1,6 @@
 import pyray as rl
+import math
+import time
 from dataclasses import dataclass
 from openpilot.common.constants import CV
 from openpilot.selfdrive.ui.mici.onroad.dynamic_steering_learner_graph import DynamicSteeringLearnerGraphMici
@@ -20,6 +22,10 @@ KM_TO_MILE = 0.621371
 CRUISE_DISABLED_CHAR = '–'
 
 SET_SPEED_PERSISTENCE = 2.5  # seconds
+DP_INDICATOR_BLINK_RATE_FAST = max(1, int(gui_app.target_fps * 0.25))
+DP_INDICATOR_BLINK_RATE_STD = max(1, int(gui_app.target_fps * 0.5))
+DP_INDICATOR_COLOR_BSM = rl.Color(255, 204, 0, 220)
+DP_INDICATOR_COLOR_BLINKER = rl.Color(0, 255, 0, 220)
 
 
 @dataclass(frozen=True)
@@ -108,6 +114,17 @@ class HudRenderer(Widget):
     self.speed: float = 0.0
     self.v_ego_cluster_seen: bool = False
     self._engaged: bool = False
+    self.tdx_event_active: bool = False
+    self.tdx_event_desc: str = ""
+    self.lead_dist: str = "-"
+    self.lead_dist_raw: float = 0.0
+
+    self._dp_indicator_show_left = False
+    self._dp_indicator_show_right = False
+    self._dp_indicator_count_left = 0
+    self._dp_indicator_count_right = 0
+    self._dp_indicator_color_left = rl.Color(0, 0, 0, 0)
+    self._dp_indicator_color_right = rl.Color(0, 0, 0, 0)
 
     self._can_draw_top_icons = True
     self._show_wheel_critical = False
@@ -143,6 +160,23 @@ class HudRenderer(Widget):
     # whether we're drawing any top icons currently
     return bool(self._set_speed_alpha_filter.x > 1e-2)
 
+  @staticmethod
+  def _update_indicator_side(blinker: bool, blindspot: bool, shown: bool, count: int):
+    if not blinker and not blindspot:
+      return False, 0, rl.Color(0, 0, 0, 0)
+
+    count = (count + 1) % (DP_INDICATOR_BLINK_RATE_FAST * 2)
+    if blinker and blindspot:
+      shown = not shown if count % DP_INDICATOR_BLINK_RATE_FAST == 0 else shown
+      color = DP_INDICATOR_COLOR_BSM
+    elif blinker:
+      shown = not shown if count % DP_INDICATOR_BLINK_RATE_STD == 0 else shown
+      color = DP_INDICATOR_COLOR_BLINKER
+    else:
+      shown = True
+      color = DP_INDICATOR_COLOR_BSM
+    return shown, count, color
+
   def _update_state(self) -> None:
     """Update HUD state based on car state and controls state."""
     sm = ui_state.sm
@@ -150,10 +184,33 @@ class HudRenderer(Widget):
       self.is_cruise_set = False
       self.set_speed = SET_SPEED_NA
       self.speed = 0.0
+      self.tdx_event_active = False
+      self.tdx_event_desc = ""
+      self.lead_dist = "-"
+      self.lead_dist_raw = 0.0
       return
 
     controls_state = sm['controlsState']
     car_state = sm['carState']
+
+    if ui_state.params.get_bool("HudMode"):
+      self.lead_dist_raw = 105.0
+      self.lead_dist = "105m"
+      self.tdx_event_active = True
+      self.tdx_event_desc = "前方:施工事件"
+      left_blinker, left_blindspot = True, False
+      right_blinker, right_blindspot = False, True
+    else:
+      self.lead_dist_raw = 0.0
+      self.lead_dist = "-"
+      self.tdx_event_active = False
+      self.tdx_event_desc = ""
+      left_blinker = left_blindspot = right_blinker = right_blindspot = False
+
+    self._dp_indicator_show_left, self._dp_indicator_count_left, self._dp_indicator_color_left = \
+      self._update_indicator_side(left_blinker, left_blindspot, self._dp_indicator_show_left, self._dp_indicator_count_left)
+    self._dp_indicator_show_right, self._dp_indicator_count_right, self._dp_indicator_color_right = \
+      self._update_indicator_side(right_blinker, right_blindspot, self._dp_indicator_show_right, self._dp_indicator_count_right)
 
     v_cruise_cluster = car_state.vCruiseCluster
     set_speed = (
@@ -186,6 +243,91 @@ class HudRenderer(Widget):
       self._draw_set_speed(rect)
 
     self._draw_steering_wheel(rect)
+    self._draw_lead_info(rect)
+    self._draw_tdx_info(rect)
+    self._draw_edge_warnings(rect)
+
+  def _draw_edge_warnings(self, rect: rl.Rectangle) -> None:
+    bar_width = 20
+    bar_height = int(rect.height * 0.60)
+    y_pos = int(rect.y + (rect.height - bar_height) / 2) - 20
+    if self._dp_indicator_show_left:
+      rl.draw_rectangle_rounded(rl.Rectangle(rect.x, y_pos, bar_width, bar_height), 0.75, 20,
+                                self._dp_indicator_color_left)
+    if self._dp_indicator_show_right:
+      rl.draw_rectangle_rounded(rl.Rectangle(rect.x + rect.width - bar_width, y_pos, bar_width, bar_height), 0.75, 20,
+                                self._dp_indicator_color_right)
+
+  def _draw_lead_info(self, rect: rl.Rectangle) -> None:
+    if self.lead_dist == "-":
+      return
+
+    bar_h, bar_w = 40.0, 45.0
+    pos_y = int(rect.y + rect.height - 39)
+    bar_x = rect.x + (rect.width - bar_w) / 2
+    bar_y = pos_y - bar_h / 2
+    is_warning = self.lead_dist_raw < 15.0
+    if is_warning:
+      alpha = 150 + int(60 * math.sin(time.time() * 5))
+      edge_color = rl.Color(180, 0, 0, alpha)
+      center_color = rl.Color(255, 100, 100, alpha)
+      text_color = rl.Color(255, 100, 100, 255)
+    else:
+      edge_color = rl.Color(0, 180, 0, 255)
+      center_color = rl.Color(150, 255, 150, 255)
+      text_color = rl.Color(128, 216, 166, 255)
+
+    text_size = measure_text_cached(self._font_bold, self.lead_dist, 40)
+    text_x = bar_x - text_size.x - 15
+    text_y = pos_y - text_size.y / 2
+    rl.draw_text_ex(self._font_bold, self.lead_dist, rl.Vector2(text_x + 2, text_y + 2), 40, 0, rl.Color(0, 0, 0, 150))
+    rl.draw_text_ex(self._font_bold, self.lead_dist, rl.Vector2(text_x, text_y), 40, 0, text_color)
+
+    top = rl.Vector2(bar_x + bar_w / 2, bar_y)
+    left = rl.Vector2(bar_x, bar_y + bar_h)
+    right = rl.Vector2(bar_x + bar_w, bar_y + bar_h)
+    center = rl.Vector2(bar_x + bar_w / 2, bar_y + bar_h * 0.55)
+    rl.draw_triangle(center, left, right, rl.Color(0, 0, 0, 180))
+    rl.draw_triangle(center, top, right, edge_color)
+    rl.draw_triangle(center, top, left, edge_color)
+    rl.draw_triangle(center, rl.Vector2(bar_x + bar_w * 0.35, bar_y + bar_h * 0.35),
+                     rl.Vector2(bar_x + bar_w * 0.65, bar_y + bar_h * 0.35), center_color)
+
+  def _draw_tdx_info(self, rect: rl.Rectangle) -> None:
+    if not self.tdx_event_active or not self.tdx_event_desc:
+      return
+
+    font_size = 70
+    text_size = measure_text_cached(self._font_bold, self.tdx_event_desc, font_size)
+    bar_width, gap = 20, 2
+    bg_width = rect.width - bar_width * 2 - gap * 2
+    bg_height = text_size.y + 30
+    bg_x = rect.x + bar_width + gap
+    bg_y = rect.y + (rect.height - text_size.y) / 2 - 35
+    bg_rect = rl.Rectangle(bg_x, bg_y, bg_width, bg_height)
+    alpha = 150 + int(60 * math.sin(time.time() * 5))
+    rl.draw_rectangle_rounded(bg_rect, 0.2, 10, rl.Color(0, 0, 0, 180))
+    rl.draw_rectangle_rounded(bg_rect, 0.2, 10, rl.Color(220, 50, 50, alpha))
+
+    padding = 20
+    max_width = bg_width - padding * 2
+    if text_size.x <= max_width:
+      draw_x = bg_x + (bg_width - text_size.x) / 2
+      rl.draw_text_ex(self._font_bold, self.tdx_event_desc, rl.Vector2(draw_x, bg_y + 15), font_size, 0, rl.WHITE)
+      return
+
+    extra_width = text_size.x - max_width
+    duration = 2.0 + extra_width / 80.0 + 2.0
+    cycle = time.time() % duration
+    if cycle < 2.0:
+      offset = 0.0
+    elif cycle < duration - 2.0:
+      offset = extra_width * (cycle - 2.0) / (duration - 4.0)
+    else:
+      offset = extra_width
+    rl.begin_scissor_mode(int(bg_x), int(bg_y), int(bg_width), int(bg_height))
+    rl.draw_text_ex(self._font_bold, self.tdx_event_desc, rl.Vector2(bg_x + padding - offset, bg_y + 15), font_size, 0, rl.WHITE)
+    rl.end_scissor_mode()
 
   def _draw_steering_wheel(self, rect: rl.Rectangle) -> None:
     wheel_txt = self._txt_wheel_critical if self._show_wheel_critical else self._txt_wheel
