@@ -177,6 +177,28 @@ class HudRenderer(Widget):
       color = DP_INDICATOR_COLOR_BSM
     return shown, count, color
 
+  @staticmethod
+  def _format_tdx_description(description: str) -> str:
+    event_labels = {
+      "1": "交通事故",
+      "2": "施工事件",
+      "3": "壅塞事件",
+      "4": "道路管制",
+      "5": "天氣異常",
+      "8": "其他異常",
+    }
+    if not description or ":" not in description:
+      return description
+
+    location, events = description.split(":", 1)
+    labels: list[str] = []
+    for event in events.split("/"):
+      event_type = event.split("|", 1)[0]
+      label = event_labels.get(event_type, "其他異常")
+      if label not in labels:
+        labels.append(label)
+    return f"{location}:{''.join(labels)}"
+
   def _update_state(self) -> None:
     """Update HUD state based on car state and controls state."""
     sm = ui_state.sm
@@ -194,10 +216,23 @@ class HudRenderer(Widget):
     car_state = sm['carState']
 
     if ui_state.params.get_bool("HudMode"):
-      self.lead_dist_raw = 105.0
-      self.lead_dist = "105m"
+      radar_state = sm['radarState']
+      if radar_state.leadOne.status:
+        self.lead_dist_raw = radar_state.leadOne.dRel
+        self.lead_dist = f"{self.lead_dist_raw:.0f}m"
+      else:
+        self.lead_dist_raw = 105.0
+        self.lead_dist = "105m"
+
       self.tdx_event_active = True
       self.tdx_event_desc = "前方:施工事件"
+      try:
+        road_event = sm['tdx'].roadEvent
+        if road_event.isActive:
+          self.tdx_event_desc = self._format_tdx_description(str(road_event.description))
+      except Exception:
+        pass
+
       left_blinker, left_blindspot = True, False
       right_blinker, right_blindspot = False, True
     else:

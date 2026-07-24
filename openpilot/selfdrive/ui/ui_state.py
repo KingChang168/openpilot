@@ -64,6 +64,7 @@ class UIState(UIStateSP):
         "liveCurvatureParameters",
         "testJoystick",
         "rawAudioData",
+        "tdx",
       ] + self.sm_services_ext
     )
 

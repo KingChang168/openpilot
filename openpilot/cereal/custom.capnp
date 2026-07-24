@@ -456,7 +456,29 @@ struct ModelDataV2SP @0xa1680744031fdb2d {
   }
 }
 
+struct TdxTrafficStatus @0x9c6e7b5a2140d9f1 {
+  isValid @0 :Bool;
+  roadName @1 :Text;
+  distance @2 :Float32;
+  speed @3 :Float32;
+  travelTime @4 :Float32;
+  updateTime @5 :Text;
+}
+
+struct TdxRoadEvent @0x9c6e7b5a2140d9f2 {
+  isActive @0 :Bool;
+  description @1 :Text;
+  distance @2 :Float32;
+  latitude @3 :Float64;
+  longitude @4 :Float64;
+  eventType @5 :UInt16;
+  updateTime @6 :Text;
+}
+
 struct CustomReserved10 @0xcb9fd56c7057593a {
+  trafficStatus @0 :TdxTrafficStatus;
+  roadEvent @1 :TdxRoadEvent;
+  lastUpdateTime @2 :Text;
 }
 
 struct CustomReserved11 @0xc2243c65e0340384 {
