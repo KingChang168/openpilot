@@ -285,6 +285,11 @@ multilang.setup()
 tr, trn = multilang.tr, multilang.trn
 
 
+def translate_offroad_alert(text: str, extra: str = "") -> str:
+  # Translate templates before inserting variable values (temperature, speed, etc.).
+  return tr(text).replace("%1", tr(extra))
+
+
 # no-op marker for static strings translated later
 def tr_noop(s: str) -> str:
   return s

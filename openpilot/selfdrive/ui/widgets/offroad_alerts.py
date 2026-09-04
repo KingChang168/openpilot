@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from openpilot.common.params import Params
 from openpilot.common.hardware import HARDWARE
 from openpilot.system.ui.lib.application import gui_app, FontWeight, FONT_SCALE
-from openpilot.system.ui.lib.multilang import tr
+from openpilot.system.ui.lib.multilang import tr, translate_offroad_alert
 from openpilot.system.ui.lib.scroll_panel import GuiScrollPanel
 from openpilot.system.ui.lib.text_measure import measure_text_cached
 from openpilot.system.ui.lib.wrap_text import wrap_text
@@ -219,7 +219,7 @@ class OffroadAlert(AbstractAlert):
       alert_json = self.params.get(alert_data.key)
 
       if alert_json:
-        text = alert_json.get("text", "").replace("%1", alert_json.get("extra", ""))
+        text = translate_offroad_alert(alert_json.get("text", ""), alert_json.get("extra", ""))
 
       alert_data.text = text
       alert_data.visible = bool(text)

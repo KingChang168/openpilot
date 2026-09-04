@@ -2662,3 +2662,55 @@ msgstr[0] "目前已有 {} 個行車片段納入訓練資料集。"
 msgid "✓ SUBSCRIBED"
 msgstr "✓ 已訂閱"
 
+#: openpilot/selfdrive/ui/mici/layouts/settings/software.py
+msgid "install now"
+msgstr "立即安裝"
+
+#: openpilot/selfdrive/ui/mici/layouts/settings/software.py
+msgid "Failed to get available branches. Ensure you're connected to the internet and try again."
+msgstr "無法取得可用分支。請確認已連上網際網路後再試一次。"
+
+#: openpilot/sunnypilot/selfdrive/selfdrived/events.py
+msgid "Big Model Ready"
+msgstr "大模型已就緒"
+
+#: openpilot/selfdrive/selfdrived/alerts_offroad.json
+msgid "Chestnut detected! Switch to the %1 branch to use chestnut-class models."
+msgstr "已偵測到 Chestnut！請切換至 %1 分支，以使用 Chestnut 大模型。"
+
+#: openpilot/selfdrive/selfdrived/alerts_offroad.json
+msgid "Chestnut not detected. Check USB and 12V connections."
+msgstr "未偵測到 Chestnut。請檢查 USB 與 12V 電源連接。"
+
+#: openpilot/selfdrive/selfdrived/alerts_offroad.json
+msgid "Chestnut overheated. Ensure good airflow. Current GPU temperature is %1."
+msgstr "Chestnut 過熱。請確保通風良好。目前 GPU 溫度為 %1。"
+
+#: openpilot/selfdrive/selfdrived/alerts_offroad.json
+msgid "Chestnut model not compiled. Keep ignition on and reboot the comma."
+msgstr "Chestnut 模型尚未編譯。請保持車輛電源開啟，並重新啟動 comma 裝置。"
+
+#: openpilot/selfdrive/selfdrived/alerts_offroad.json
+msgid "Chestnut update failed. Check the USB cable."
+msgstr "Chestnut 更新失敗。請檢查 USB 連接線。"
+
+#: openpilot/selfdrive/selfdrived/alerts_offroad.json
+msgid "Chestnut USB link is slow. Check the USB cable. The current speed is %1."
+msgstr "Chestnut USB 連線速度過慢。請檢查 USB 連接線。目前速度為 %1。"
+
+#: openpilot/system/hardware/chestnut/status.py
+msgid "Chestnut GPU unavailable. PCIe link is not up. Check the GPU is securely seated."
+msgstr "Chestnut GPU 無法使用。PCIe 連線尚未建立，請檢查 GPU 是否已牢固安裝。"
+
+#: openpilot/system/hardware/chestnut/status.py
+msgid "Chestnut power disconnected. Check 12V connection, then cycle ignition."
+msgstr "Chestnut 電源未連接。請檢查 12V 電源，再關閉並重新開啟車輛電源。"
+
+#: openpilot/system/hardware/chestnut/status.py
+msgid "Chestnut power lost. Possibly caused by an engine-crank voltage drop. Check 12V connection, then cycle ignition."
+msgstr "Chestnut 供電中斷，可能是引擎啟動時電壓下降所致。請檢查 12V 電源，再關閉並重新開啟車輛電源。"
+
+#: openpilot/system/hardware/chestnut/status.py
+msgid "Chestnut power restored. 12V is stable again, cycle ignition."
+msgstr "Chestnut 已恢復供電，12V 電源已穩定。請關閉並重新開啟車輛電源。"
+
