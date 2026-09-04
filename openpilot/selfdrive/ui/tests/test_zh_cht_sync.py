@@ -1,3 +1,4 @@
+import ast
 import json
 import re
 import string
@@ -23,6 +24,34 @@ class TestTraditionalChineseSync(unittest.TestCase):
   def test_no_duplicate_or_empty_translations(self):
     assert all(count == 1 for count in Counter(e.msgid for e in self.entries).values())
     assert all(e.msgstr or e.msgstr_plural for e in self.entries)
+
+  def test_c4_confirmation_and_onboarding_labels_translated(self):
+    translations = {**lang.C4_ZH_CHT_TRANSLATIONS, **self.translations}
+    layout_dir = ROOT / 'openpilot/selfdrive/ui/mici/layouts'
+    for relative in ('onboarding.py', 'settings/developer.py', 'settings/toggles.py'):
+      tree = ast.parse((layout_dir / relative).read_text(encoding='utf-8'))
+      for node in ast.walk(tree):
+        if not isinstance(node, ast.Call) or not isinstance(node.func, ast.Name):
+          continue
+        if node.func.id not in ('BigButton', 'GreyBigButton', 'BigConfirmationCircleButton'):
+          continue
+        for arg in node.args[:2]:
+          if isinstance(arg, ast.Constant) and isinstance(arg.value, str) and arg.value:
+            assert translations.get(arg.value), (relative, node.lineno, arg.value)
+
+  def test_c4_compatibility_table_has_no_duplicate_keys(self):
+    tree = ast.parse((ROOT / 'openpilot/system/ui/lib/multilang.py').read_text(encoding='utf-8'))
+    for node in tree.body:
+      if isinstance(node, ast.Assign) and any(isinstance(t, ast.Name) and t.id == 'C4_ZH_CHT_TRANSLATIONS' for t in node.targets):
+        keys = [ast.literal_eval(key) for key in node.value.keys]
+        assert len(keys) == len(set(keys))
+
+  def test_c4_model_and_camera_labels(self):
+    translations = {**lang.C4_ZH_CHT_TRANSLATIONS, **self.translations}
+    for text in ('record & upload cabin camera', 'small models', 'big models', 'small model', 'big model',
+                 'active', 'Default', 'unavailable', 'getting ready', 'queued'):
+      assert translations.get(text) and translations[text] != text, text
+    assert translations['active model'] == '目前模型'
 
   def test_placeholders_preserved(self):
     def placeholders(text):

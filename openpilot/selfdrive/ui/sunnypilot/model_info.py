@@ -8,6 +8,7 @@ from openpilot.selfdrive.ui.ui_state import ui_state, ChestnutState
 from openpilot.sunnypilot.models.fetcher import get_cached_bundles
 from openpilot.sunnypilot.models.helpers import get_active_source, get_selected_bundle, resolve_bundle_by_ref
 from openpilot.sunnypilot.models.model_name import DEFAULT_BIG_MODEL, DEFAULT_MODEL
+from openpilot.system.ui.lib.multilang import tr
 
 
 def active_source() -> str:
@@ -27,7 +28,7 @@ def default_model(source: str) -> str:
 
 
 def default_model_name(source: str) -> str:
-  return f"{default_model(source)} (Default)"
+  return f"{default_model(source)} ({tr('Default')})"
 
 
 def big_model_state() -> str | None:

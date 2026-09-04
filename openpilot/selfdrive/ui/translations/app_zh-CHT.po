@@ -2255,7 +2255,7 @@ msgstr "車輛將使用預測式縱向控制調校。"
 
 #: openpilot/selfdrive/ui/sunnypilot/mici/layouts/models.py
 msgid "active model"
-msgstr "使用中的駕駛模型"
+msgstr "目前模型"
 
 #: openpilot/selfdrive/ui/sunnypilot/mici/layouts/sunnylink.py
 msgid "backing up"
