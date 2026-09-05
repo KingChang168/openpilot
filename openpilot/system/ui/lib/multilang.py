@@ -28,6 +28,61 @@ FONT_FALLBACK_LANGUAGES = [
 ]
 
 C4_ZH_CHT_TRANSLATIONS = {
+  "record & upload cabin camera": "錄製並上傳\n車內鏡頭影像",
+  "small models": "小模型",
+  "big models": "大模型",
+  "small model": "小模型",
+  "big model": "大模型",
+  "active": "使用中",
+  "unavailable": "無法使用",
+  "getting ready": "準備中",
+  "queued": "等待中",
+  "No models available": "沒有可用模型",
+  "No models are available for this hardware yet. Connect to the internet and refresh the model list.":
+    "目前沒有適用於此硬體的模型。請連上網路並重新整理模型清單。",
+  "scroll to continue": "向下捲動以繼續",
+  "enable alpha\nlongitudinal": "啟用 Alpha\n縱向控制",
+  "enabling alpha longitudinal": "啟用 Alpha 縱向控制",
+  "WARNING: alpha longitudinal control may disable Automatic Emergency Braking (AEB)": "警告：Alpha 縱向控制可能會停用自動緊急煞車（AEB）。",
+  "On this car, openpilot defaults to the stock system's built-in ACC.": "此車輛的 openpilot 預設使用原廠 ACC。",
+  "Enabling this will switch to openpilot longitudinal control.": "啟用後將改由 openpilot 控制加速與煞車。",
+  "Using Experimental mode is recommended with openpilot longitudinal control alpha.": "使用 openpilot Alpha 縱向控制時，建議搭配實驗模式。",
+  "enable\nexperimental mode": "啟用\n實驗模式",
+  "enabling\nexperimental mode": "啟用\n實驗模式",
+  "openpilot defaults to driving in chill mode.": "openpilot 預設使用一般模式駕駛。",
+  "Experimental mode enables alpha-level features that aren't ready for chill mode.": "實驗模式會啟用尚未成熟、尚不適用於一般模式的 Alpha 功能。",
+  "End-to-End Longitudinal Control": "端到端縱向控制",
+  "Let the driving model control the gas and brakes.": "讓駕駛模型控制油門與煞車。",
+  "openpilot will drive as it thinks a human would, including stopping for red lights and stop signs.":
+    "openpilot 會依模型預測的人類駕駛方式行駛，包括遇到紅燈與停車標誌時停車。",
+  "The set speed will only act as an upper bound.": "設定速度僅作為速度上限。",
+  "This is an alpha quality feature; mistakes should be expected.": "此功能仍處於 Alpha 測試階段，可能發生錯誤。",
+  "New Driving Visualization": "新的行車視覺化畫面",
+  "The path will change colors to communicate acceleration intent.": "行駛路徑會變換顏色，顯示加減速意圖。",
+  "Red for braking, green for acceleration, and gray for coasting.": "紅色表示煞車、綠色表示加速、灰色表示滑行。",
+  "allow data uploading": "允許上傳資料",
+  "no, don't upload": "不要上傳",
+  "accept\nterms": "接受\n條款",
+  "decline &\nuninstall": "拒絕並\n解除安裝",
+  "terms of\nservice": "服務\n條款",
+  "You must accept the Terms of Service to use sunnypilot.": "您必須接受服務條款才能使用 sunnypilot。",
+  "driver monitoring\ncheck": "駕駛監控\n檢查",
+  "Next, we'll check if comma four can detect the driver properly.": "接下來將檢查 comma four 是否能正確偵測駕駛。",
+  "sunnypilot uses the cabin camera to check if the driver is distracted.": "sunnypilot 使用車內鏡頭偵測駕駛是否分心。",
+  "If it does not have a clear view of the driver, unplug and remount before continuing.": "若鏡頭無法清楚看見駕駛，請先拔除電源並重新調整安裝位置，再繼續。",
+  "looking for driver": "正在偵測駕駛",
+  "make sure comma\nfour can see your face": "請確認 comma four\n能看見您的臉部",
+  "Remount if your face is blocked, or driver monitoring has difficulty tracking your face.": "若臉部被遮擋，或駕駛監控無法穩定追蹤臉部，請重新調整安裝位置。",
+  "driver camera data": "駕駛監控鏡頭資料",
+  "do you want to share video data for training?": "是否分享影像資料供模型訓練使用？",
+  "Sharing your data with comma helps improve openpilot and sunnypilot for everyone.": "與 comma 分享資料，有助於改善所有使用者的 openpilot 與 sunnypilot。",
+  "what is sunnypilot?": "什麼是 sunnypilot？",
+  "1. sunnypilot is a driver assistance system.": "1. sunnypilot 是駕駛輔助系統。",
+  "2. You must pay attention at all times.": "2. 您必須隨時專心注意路況。",
+  "3. You must be ready to take over at any time.": "3. 您必須隨時準備接手駕駛。",
+  "4. You are fully responsible for driving the car.": "4. 您須對車輛駕駛負全部責任。",
+  "swipe for QR code": "滑動以顯示 QR 碼",
+  "or go to https://sunnypilot.ai/terms": "或前往 https://sunnypilot.ai/terms",
   "Advanced Settings": "進階設定",
   "VW: Blind Spot Driving Side": "VW：盲點系統駕駛側",
   "Left-Hand Drive": "左駕",
@@ -283,6 +338,11 @@ multilang = Multilang()
 multilang.setup()
 
 tr, trn = multilang.tr, multilang.trn
+
+
+def translate_offroad_alert(text: str, extra: str = "") -> str:
+  # Translate templates before inserting variable values (temperature, speed, etc.).
+  return tr(text).replace("%1", tr(extra))
 
 
 # no-op marker for static strings translated later

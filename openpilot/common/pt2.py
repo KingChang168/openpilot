@@ -72,7 +72,7 @@ class PT2Filter:
 
   def compute_saturation_steps(self, w0: float, zeta: float, dt: float) -> int:
     """
-    Berechnet eine Abschätzung der Schritte, bis der Filter (95% des Endwerts) erreicht ist.
+    Berechnet eine Abschätzung der Schritte, bis der Filter (95% des Endwerts) erreicht ist.  # codespell:ignore ist
 
     Wir nutzen hier die Abschätzung:
         T_s = 4 / (zeta * w0)
