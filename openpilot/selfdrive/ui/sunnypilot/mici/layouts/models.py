@@ -48,10 +48,12 @@ class CurrentModelInfo(Widget):
     subheader_color = rl.Color(255, 255, 255, int(255 * 0.9 * 0.65))
     max_width = int(self._rect.width - 20)
     active_text, info_header, info_text = _model_info()
-    self.current_model_header = UnifiedLabel(tr("active model"), 48, max_width=max_width, text_color=header_color, font_weight=FontWeight.DISPLAY)
+    self.current_model_header = UnifiedLabel(tr("active model"), 40, max_width=max_width, text_color=header_color,
+                                             font_weight=FontWeight.DISPLAY, wrap_text=False, scroll=True)
     self.current_model_text = UnifiedLabel(active_text, 32, max_width=max_width, text_color=subheader_color, font_weight=FontWeight.ROMAN, scroll=True)
 
-    self.info_header = UnifiedLabel(info_header, 48, max_width=max_width, text_color=header_color, font_weight=FontWeight.DISPLAY)
+    self.info_header = UnifiedLabel(info_header, 40, max_width=max_width, text_color=header_color,
+                                    font_weight=FontWeight.DISPLAY, wrap_text=False, scroll=True)
     self.info_text = UnifiedLabel(info_text, 32, max_width=max_width, text_color=subheader_color, font_weight=FontWeight.ROMAN, scroll=True)
 
   def _render(self, _):

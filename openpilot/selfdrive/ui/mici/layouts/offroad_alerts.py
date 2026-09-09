@@ -12,7 +12,7 @@ from openpilot.system.ui.widgets import Widget
 from openpilot.system.ui.widgets.label import UnifiedLabel
 from openpilot.system.ui.widgets.scroller import Scroller
 from openpilot.system.ui.lib.application import gui_app, FontWeight, TextAlignment, TextAlignmentVertical
-from openpilot.system.ui.lib.multilang import tr
+from openpilot.system.ui.lib.multilang import tr, translate_offroad_alert
 
 REFRESH_INTERVAL = 5.0  # seconds
 
@@ -287,7 +287,7 @@ class MiciOffroadAlerts(Scroller):
       alert_json = pending_params[alert_data.key]
 
       if alert_json:
-        text = alert_json.get("text", "").replace("%1", alert_json.get("extra", ""))
+        text = translate_offroad_alert(alert_json.get("text", ""), alert_json.get("extra", ""))
 
       if text and not alert_data.visible:
         # Bump newly visible alerts to the top, severity sort keeps it at the top of its category

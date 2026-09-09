@@ -869,3 +869,55 @@ msgstr ""
 msgid "camera starting"
 msgstr ""
 
+#: openpilot/selfdrive/ui/mici/layouts/settings/software.py
+msgid "install now"
+msgstr ""
+
+#: openpilot/selfdrive/ui/mici/layouts/settings/software.py
+msgid "Failed to get available branches. Ensure you're connected to the internet and try again."
+msgstr ""
+
+#: openpilot/sunnypilot/selfdrive/selfdrived/events.py
+msgid "Big Model Ready"
+msgstr ""
+
+#: openpilot/selfdrive/selfdrived/alerts_offroad.json
+msgid "Chestnut detected! Switch to the %1 branch to use chestnut-class models."
+msgstr ""
+
+#: openpilot/selfdrive/selfdrived/alerts_offroad.json
+msgid "Chestnut not detected. Check USB and 12V connections."
+msgstr ""
+
+#: openpilot/selfdrive/selfdrived/alerts_offroad.json
+msgid "Chestnut overheated. Ensure good airflow. Current GPU temperature is %1."
+msgstr ""
+
+#: openpilot/selfdrive/selfdrived/alerts_offroad.json
+msgid "Chestnut model not compiled. Keep ignition on and reboot the comma."
+msgstr ""
+
+#: openpilot/selfdrive/selfdrived/alerts_offroad.json
+msgid "Chestnut update failed. Check the USB cable."
+msgstr ""
+
+#: openpilot/selfdrive/selfdrived/alerts_offroad.json
+msgid "Chestnut USB link is slow. Check the USB cable. The current speed is %1."
+msgstr ""
+
+#: openpilot/system/hardware/chestnut/status.py
+msgid "Chestnut GPU unavailable. PCIe link is not up. Check the GPU is securely seated."
+msgstr ""
+
+#: openpilot/system/hardware/chestnut/status.py
+msgid "Chestnut power disconnected. Check 12V connection, then cycle ignition."
+msgstr ""
+
+#: openpilot/system/hardware/chestnut/status.py
+msgid "Chestnut power lost. Possibly caused by an engine-crank voltage drop. Check 12V connection, then cycle ignition."
+msgstr ""
+
+#: openpilot/system/hardware/chestnut/status.py
+msgid "Chestnut power restored. 12V is stable again, cycle ignition."
+msgstr ""
+
