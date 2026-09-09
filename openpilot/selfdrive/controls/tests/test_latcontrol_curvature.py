@@ -41,6 +41,7 @@ def make_controller():
   CP = SimpleNamespace(steerLimitTimer=1.0, lateralTuning=DummyLateralTuning())
   controller = LatControlCurvature(CP, None, None, DT)
   controller.set_pid_enabled(True)
+  assert controller.pid is not None
   controller.pid.i = INITIAL_I
   return controller
 
