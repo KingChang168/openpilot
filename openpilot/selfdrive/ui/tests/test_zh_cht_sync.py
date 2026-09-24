@@ -49,7 +49,8 @@ class TestTraditionalChineseSync(unittest.TestCase):
   def test_c4_model_and_camera_labels(self):
     translations = {**lang.C4_ZH_CHT_TRANSLATIONS, **self.translations}
     for text in ('record & upload cabin camera', 'small models', 'big models', 'small model', 'big model',
-                 'active', 'Default', 'unavailable', 'getting ready', 'queued'):
+                 'active', 'Default', 'unavailable', 'getting ready', 'queued',
+                 'refresh models', 'clear cache', 'fetching...', 'clearing...'):
       assert translations.get(text) and translations[text] != text, text
     assert translations['active model'] == '目前模型'
 

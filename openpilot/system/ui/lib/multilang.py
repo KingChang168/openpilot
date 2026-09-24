@@ -37,6 +37,10 @@ C4_ZH_CHT_TRANSLATIONS = {
   "unavailable": "無法使用",
   "getting ready": "準備中",
   "queued": "等待中",
+  "refresh models": "重新整理模型",
+  "clear cache": "清除快取",
+  "fetching...": "取得中…",
+  "clearing...": "清除中…",
   "No models available": "沒有可用模型",
   "No models are available for this hardware yet. Connect to the internet and refresh the model list.":
     "目前沒有適用於此硬體的模型。請連上網路並重新整理模型清單。",
