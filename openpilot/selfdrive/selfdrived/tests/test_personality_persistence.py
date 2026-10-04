@@ -2,6 +2,7 @@ import threading
 import time
 import unittest
 from types import SimpleNamespace
+from typing import Any
 
 from openpilot.selfdrive.selfdrived.selfdrived import SelfdriveD
 
@@ -49,7 +50,7 @@ class DelayedReadParams(SlowParams):
 class TestPersonalityPersistence(unittest.TestCase):
   def test_button_survives_slow_param_write(self):
     params = SlowParams()
-    selfdrive = SelfdriveD.__new__(SelfdriveD)
+    selfdrive: Any = SelfdriveD.__new__(SelfdriveD)
     selfdrive.params = params
     selfdrive.CP = SimpleNamespace(openpilotLongitudinalControl=True)
     selfdrive.mads = SimpleNamespace(read_params=lambda: None)
@@ -90,7 +91,7 @@ class TestPersonalityPersistence(unittest.TestCase):
 
   def test_read_started_before_button_cannot_revert_it(self):
     params = DelayedReadParams()
-    selfdrive = SelfdriveD.__new__(SelfdriveD)
+    selfdrive: Any = SelfdriveD.__new__(SelfdriveD)
     selfdrive.params = params
     selfdrive.CP = SimpleNamespace(openpilotLongitudinalControl=True)
     selfdrive.personality = 0

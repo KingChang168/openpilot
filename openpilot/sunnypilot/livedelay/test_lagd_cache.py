@@ -1,8 +1,10 @@
 import time
 import unittest
 from types import SimpleNamespace
+from typing import cast
 from unittest.mock import patch
 
+from openpilot.common.params import Params
 from openpilot.sunnypilot.livedelay.helpers import LateralDelayCache
 from openpilot.sunnypilot.livedelay.lagd_toggle import CACHE_PERIODIC_INTERVAL, LagdToggle
 
@@ -34,7 +36,7 @@ class TestLateralDelayCache(unittest.TestCase):
   def test_model_reads_cached_values_and_refreshes_settings(self):
     params = FakeParams()
     with patch('openpilot.sunnypilot.livedelay.helpers.drop_realtime'):
-      cache = LateralDelayCache(0.2, refresh_interval=0.01, params=params)
+      cache = LateralDelayCache(0.2, refresh_interval=0.01, params=cast(Params, params))
       try:
         reads_at_start = params.read_count
         for _ in range(100):
