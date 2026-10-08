@@ -359,7 +359,7 @@ class SoftwareLayoutMici(NavScroller):
     uninstall_openpilot_btn = EngagedConfirmationButton(tr_noop("uninstall sunnypilot"), tr_noop("uninstall"),
                                                         gui_app.texture("icons_mici/settings/device/uninstall.png", 64, 64),
                                                         uninstall_openpilot_callback, exit_on_confirm=False,
-                                                        description="Remove openpilot from this device.",
+                                                        description=tr_noop("Remove openpilot from this device."),
                                                         description_icon=gui_app.texture("icons_mici/setup/factory_reset.png", 64, 64))
 
     check_update_btn = CheckUpdateButton()

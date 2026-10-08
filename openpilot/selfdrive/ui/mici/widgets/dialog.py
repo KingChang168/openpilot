@@ -10,6 +10,7 @@ from openpilot.system.ui.widgets.label import UnifiedLabel
 from openpilot.system.ui.widgets.mici_keyboard import MiciKeyboard
 from openpilot.system.ui.lib.text_measure import measure_text_cached
 from openpilot.system.ui.lib.application import gui_app, FontWeight, MousePos
+from openpilot.system.ui.lib.multilang import tr, tr_noop
 from openpilot.system.ui.widgets.slider import RedBigSlider, BigSlider
 from openpilot.common.filter_simple import FirstOrderFilter
 from openpilot.selfdrive.ui.mici.widgets.button import BigCircleButton, GreyBigButton
@@ -42,7 +43,8 @@ class BigDialog(BigDialogBase):
 class SettingDescriptionDialog(NavScroller):
   def __init__(self, title: str, description: str, icon: Union[rl.Texture, None] = None):
     super().__init__()
-    cards = [GreyBigButton(title, "scroll for details", icon or gui_app.texture("icons_mici/setup/green_info.png", 64, 64))]
+    cards = [GreyBigButton(title, tr_noop("scroll for details"), icon or gui_app.texture("icons_mici/setup/green_info.png", 64, 64))]
+    description = tr(description)
     # Explicit lines are authored cards; otherwise prefer sentence boundaries.
     paragraphs = description.splitlines() if "\n" in description else re.split(r"(?<=[.!?])\s+", description.strip())
     # Measure each card so longer text still fits with the actual font and padding.
