@@ -147,6 +147,7 @@ C4_ZH_CHT_TRANSLATIONS = {
   "unsupported": "不支援",
   "start the car to\nuse sunnypilot": "發動車輛以\n使用 sunnypilot",
   "system booting": "系統啟動中",
+  "ready": "就緒",
   "openpilot can't start\ncheck alerts": "openpilot 無法啟動\n請查看警示",
   "pair with comma connect": "與 comma connect 配對",
   "cache size": "快取大小",

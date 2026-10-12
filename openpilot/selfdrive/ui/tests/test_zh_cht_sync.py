@@ -7,7 +7,7 @@ from collections import Counter
 from pathlib import Path
 from unittest.mock import patch
 
-from openpilot.selfdrive.ui.translations.potools import parse_po
+from openpilot.selfdrive.ui.translations.potools import parse_po, extract_offroad_strings
 from openpilot.system.ui.lib import multilang as lang
 
 
@@ -50,7 +50,7 @@ class TestTraditionalChineseSync(unittest.TestCase):
     translations = {**lang.C4_ZH_CHT_TRANSLATIONS, **self.translations}
     for text in ('record & upload cabin camera', 'small models', 'big models', 'small model', 'big model',
                  'active', 'Default', 'unavailable', 'getting ready', 'queued',
-                 'refresh models', 'clear cache', 'fetching...', 'clearing...'):
+                 'refresh models', 'clear cache', 'fetching...', 'clearing...', 'ready'):
       assert translations.get(text) and translations[text] != text, text
     assert translations['active model'] == '目前模型'
 
@@ -68,7 +68,7 @@ class TestTraditionalChineseSync(unittest.TestCase):
     for key, alert in alerts.items():
       if key.startswith('Offroad_Chestnut') and alert['text'] != '%1':
         assert self.translations.get(alert['text']), key
-    for text in ('install now', 'Big Model Ready',
+    for text in ('install now', 'Big Model',
                  "Failed to get available branches. Ensure you're connected to the internet and try again."):
       assert self.translations.get(text), text
 
@@ -83,6 +83,16 @@ class TestTraditionalChineseSync(unittest.TestCase):
   def test_untranslated_alert_is_unchanged(self):
     with patch.object(lang, 'tr', side_effect=lambda text: text):
       assert lang.translate_offroad_alert('GPU temperature %1', '85 °C') == 'GPU temperature 85 °C'
+
+  def test_offroad_alert_catalog_is_complete(self):
+    for entry in extract_offroad_strings(ROOT):
+      assert self.translations.get(entry.msgid), entry.msgid
+
+  def test_new_c4_settings_and_esim_labels(self):
+    for text in ('scroll for details', 'add profile', 'scan QR code', 'nickname', 'slide to delete',
+                 'not an LPA code', 'hold QR code to camera', 'installing profile', 'please wait',
+                 'Select the software branch to download on the next update check.'):
+      assert self.translations.get(text) and self.translations[text] != text, text
 
 
 if __name__ == '__main__':
