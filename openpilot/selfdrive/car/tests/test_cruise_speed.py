@@ -17,7 +17,7 @@ ButtonEvent = car.CarState.ButtonEvent
 ButtonType = car.CarState.ButtonEvent.Type
 
 
-def run_cruise_simulation(cruise, e2e, personality, t_end=20.):
+def run_cruise_simulation(cruise, personality, t_end=20.):
   man = Maneuver(
     '',
     duration=t_end,
@@ -27,7 +27,6 @@ def run_cruise_simulation(cruise, e2e, personality, t_end=20.):
     cruise_values=[cruise],
     prob_lead_values=[0.0],
     breakpoints=[0.],
-    e2e=e2e,
     personality=personality,
   )
   valid, output = man.evaluate()
@@ -35,8 +34,7 @@ def run_cruise_simulation(cruise, e2e, personality, t_end=20.):
   return output[-1, 3]
 
 
-@parameterized_class(("e2e", "personality", "speed"), itertools.product(
-                      [True, False], # e2e
+@parameterized_class(("personality", "speed"), itertools.product(
                       log.LongitudinalPersonality.schema.enumerants, # personality
                       [5,35])) # speed
 class TestCruiseSpeed(OpenpilotTestCase):
@@ -44,7 +42,7 @@ class TestCruiseSpeed(OpenpilotTestCase):
     print(f'Testing {self.speed} m/s')
     cruise_speed = float(self.speed)
 
-    simulation_steady_state = run_cruise_simulation(cruise_speed, self.e2e, self.personality)
+    simulation_steady_state = run_cruise_simulation(cruise_speed, self.personality)
     self.assertAlmostEqual(simulation_steady_state, cruise_speed, delta=.01, msg=f'Did not reach {self.speed} m/s')
 
 
@@ -63,16 +61,16 @@ class TestVCruiseHelper(OpenpilotTestCase):
     for _ in range(2):
       self.v_cruise_helper.update_v_cruise(car.CarState(cruiseState={"available": False}), self.CS_IC, enabled=False, is_metric=False)
 
-  def enable(self, v_ego, experimental_mode, dynamic_experimental_control):
+  def enable(self, v_ego):
     # Simulates user pressing set with a current speed
-    self.v_cruise_helper.initialize_v_cruise(car.CarState(vEgo=v_ego), experimental_mode, dynamic_experimental_control)
+    self.v_cruise_helper.initialize_v_cruise(car.CarState(vEgo=v_ego), V_CRUISE_INITIAL)
 
   def test_adjust_speed(self):
     """
     Asserts speed changes on falling edges of buttons.
     """
 
-    self.enable(V_CRUISE_INITIAL * CV.KPH_TO_MS, False, False)
+    self.enable(V_CRUISE_INITIAL * CV.KPH_TO_MS)
 
     for btn in (ButtonType.accelCruise, ButtonType.decelCruise):
       for pressed in (True, False):
@@ -96,7 +94,7 @@ class TestVCruiseHelper(OpenpilotTestCase):
       CS.buttonEvents = [ButtonEvent(type=ButtonType.decelCruise, pressed=pressed)]
       self.v_cruise_helper.update_v_cruise(CS, self.CS_IC, enabled=enabled, is_metric=False)
       if pressed:
-        self.enable(V_CRUISE_INITIAL * CV.KPH_TO_MS, False, False)
+        self.enable(V_CRUISE_INITIAL * CV.KPH_TO_MS)
 
       # Expected diff on enabling. Speed should not change on falling edge of pressed
       assert (not pressed) == (self.v_cruise_helper.v_cruise_kph == self.v_cruise_helper.v_cruise_kph_last)
@@ -106,7 +104,7 @@ class TestVCruiseHelper(OpenpilotTestCase):
     Asserts we don't increment set speed if user presses resume/accel to exit cruise standstill.
     """
 
-    self.enable(0, False, False)
+    self.enable(0)
 
     for standstill in (True, False):
       for pressed in (True, False):
@@ -126,7 +124,7 @@ class TestVCruiseHelper(OpenpilotTestCase):
 
     for v_ego in np.linspace(0, 100, 101):
       self.reset_cruise_speed_state()
-      self.enable(V_CRUISE_INITIAL * CV.KPH_TO_MS, False, False)
+      self.enable(V_CRUISE_INITIAL * CV.KPH_TO_MS)
 
       # first decrement speed, then perform gas pressed logic
       expected_v_cruise_kph = self.v_cruise_helper.v_cruise_kph - IMPERIAL_INCREMENT
@@ -147,15 +145,13 @@ class TestVCruiseHelper(OpenpilotTestCase):
     Asserts allowed cruise speeds on enabling with SET.
     """
 
-    for experimental_mode in (True, False):
-      for dynamic_experimental_control in (True, False):
-        for v_ego in np.linspace(0, 100, 101):
-          self.reset_cruise_speed_state()
-          assert not self.v_cruise_helper.v_cruise_initialized
+    for v_ego in np.linspace(0, 100, 101):
+      self.reset_cruise_speed_state()
+      assert not self.v_cruise_helper.v_cruise_initialized
 
-          self.enable(float(v_ego), experimental_mode, dynamic_experimental_control)
-          assert V_CRUISE_INITIAL <= self.v_cruise_helper.v_cruise_kph <= V_CRUISE_MAX
-          assert self.v_cruise_helper.v_cruise_initialized
+      self.enable(float(v_ego))
+      assert V_CRUISE_INITIAL <= self.v_cruise_helper.v_cruise_kph <= V_CRUISE_MAX
+      assert self.v_cruise_helper.v_cruise_initialized
 
   def test_curve_prediction_is_a_cap_not_a_setpoint(self):
     self.v_cruise_helper.v_cruise_kph = 70

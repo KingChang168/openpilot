@@ -489,6 +489,7 @@ def build_tizi_script(pm: PubMaster, main_layout, script: Script) -> None:
 
   # === Settings - Toggles ===
   script.setup(lambda: select_settings_panel("TOGGLES"))
+  script.click(278, 600)  # toggles in the updated settings sidebar
   script.click(1200, 280)  # expand experimental mode description
 
   # === Settings - Software ===

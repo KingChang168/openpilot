@@ -95,7 +95,6 @@ msgid "UI Debug Mode"
 msgstr ""
 
 #: openpilot/selfdrive/ui/layouts/settings/developer.py
-#: openpilot/selfdrive/ui/layouts/settings/toggles.py
 #: openpilot/selfdrive/ui/sunnypilot/layouts/onboarding.py
 #: openpilot/selfdrive/ui/sunnypilot/layouts/settings/vehicle/brands/toyota.py
 msgid "Enable"
@@ -280,7 +279,7 @@ msgstr ""
 msgid ""
 "sunnypilot learns to drive by watching humans, like you, drive.\n"
 "\n"
-"Firehose Mode allows you to maximize your training data uploads to improve openpilot's driving models. More data means bigger models, which means better Experimental Mode."
+"Firehose Mode allows you to maximize your training data uploads to improve openpilot's driving models. More data means bigger models, which means better driving."
 msgstr ""
 
 #: openpilot/selfdrive/ui/layouts/settings/firehose.py
@@ -399,6 +398,25 @@ msgstr ""
 
 #: openpilot/selfdrive/ui/layouts/settings/ictoggles.py
 msgid "Show Dynamic Steering Learner Graph"
+msgstr ""
+
+#: openpilot/selfdrive/ui/layouts/settings/initial_cruise_speed.py
+#: openpilot/selfdrive/ui/mici/onroad/hud_renderer.py
+#: openpilot/selfdrive/ui/onroad/hud_renderer.py
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/cruise_sub_layouts/speed_limit_settings.py
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/initial_cruise_speed.py
+#: openpilot/selfdrive/ui/sunnypilot/onroad/speed_renderer.py
+msgid "km/h"
+msgstr ""
+
+#: openpilot/selfdrive/ui/layouts/settings/initial_cruise_speed.py
+#: openpilot/selfdrive/ui/mici/layouts/settings/initial_cruise_speed.py
+#: openpilot/selfdrive/ui/mici/onroad/hud_renderer.py
+#: openpilot/selfdrive/ui/onroad/hud_renderer.py
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/cruise_sub_layouts/speed_limit_settings.py
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/initial_cruise_speed.py
+#: openpilot/selfdrive/ui/sunnypilot/onroad/speed_renderer.py
+msgid "mph"
 msgstr ""
 
 #: openpilot/selfdrive/ui/layouts/settings/settings.py
@@ -596,7 +614,7 @@ msgid "Record and store microphone audio while driving. The audio will be includ
 msgstr ""
 
 #: openpilot/selfdrive/ui/layouts/settings/toggles.py
-msgid "Driving Personality"
+msgid "Following Distance"
 msgstr ""
 
 #: openpilot/selfdrive/ui/layouts/settings/toggles.py
@@ -604,15 +622,7 @@ msgid "Changing this setting will restart sunnypilot if the car is powered on."
 msgstr ""
 
 #: openpilot/selfdrive/ui/layouts/settings/toggles.py
-msgid "Experimental mode is currently unavailable on this car since the car's stock ACC is used for longitudinal control."
-msgstr ""
-
-#: openpilot/selfdrive/ui/layouts/settings/toggles.py
 msgid "Enable sunnypilot"
-msgstr ""
-
-#: openpilot/selfdrive/ui/layouts/settings/toggles.py
-msgid "Experimental Mode"
 msgstr ""
 
 #: openpilot/selfdrive/ui/layouts/settings/toggles.py
@@ -640,7 +650,7 @@ msgid "Use Metric System"
 msgstr ""
 
 #: openpilot/selfdrive/ui/layouts/settings/toggles.py
-msgid "sunnypilot longitudinal control may come in a future update."
+msgid "Initial Max Speed"
 msgstr ""
 
 #: openpilot/selfdrive/ui/layouts/settings/toggles.py
@@ -653,10 +663,6 @@ msgstr ""
 
 #: openpilot/selfdrive/ui/layouts/settings/toggles.py
 msgid "Relaxed"
-msgstr ""
-
-#: openpilot/selfdrive/ui/layouts/settings/toggles.py
-msgid "Enable the sunnypilot longitudinal control (alpha) toggle to allow Experimental mode."
 msgstr ""
 
 #: openpilot/selfdrive/ui/layouts/sidebar.py
@@ -747,6 +753,10 @@ msgid "camera starting"
 msgstr ""
 
 #: openpilot/selfdrive/ui/mici/layouts/settings/developer.py
+msgid "navigation (alpha)"
+msgstr ""
+
+#: openpilot/selfdrive/ui/mici/layouts/settings/developer.py
 msgid "Grant SSH access to all public keys in your GitHub settings. Only enter your own username."
 msgstr ""
 
@@ -775,22 +785,26 @@ msgid "Use alpha openpilot longitudinal control instead of stock ACC. This may d
 msgstr ""
 
 #: openpilot/selfdrive/ui/mici/layouts/settings/developer.py
+msgid "Turn-by-turn navigation with a route map. Set a destination from comma connect."
+msgstr ""
+
+#: openpilot/selfdrive/ui/mici/layouts/settings/developer.py
 msgid "Show touch locations and the UI frame rate."
 msgstr ""
 
-#: openpilot/selfdrive/ui/mici/layouts/settings/device.py
+#: openpilot/selfdrive/ui/mici/layouts/settings/device/device_layout.py
 msgid "Please connect to Wi-Fi to complete initial pairing."
 msgstr ""
 
-#: openpilot/selfdrive/ui/mici/layouts/settings/device.py
+#: openpilot/selfdrive/ui/mici/layouts/settings/device/device_layout.py
 msgid "Mount the device within 4° left or right and 5° up or 9° down. openpilot calibrates continuously; resetting is rarely needed. Resetting clears learned calibration."
 msgstr ""
 
-#: openpilot/selfdrive/ui/mici/layouts/settings/device.py
+#: openpilot/selfdrive/ui/mici/layouts/settings/device/device_layout.py
 msgid "Preview the cabin camera to check driver monitoring visibility. The vehicle must be off."
 msgstr ""
 
-#: openpilot/selfdrive/ui/mici/layouts/settings/device.py
+#: openpilot/selfdrive/ui/mici/layouts/settings/device/device_layout.py
 msgid "Device must be registered with the comma.ai backend to pair."
 msgstr ""
 
@@ -877,6 +891,29 @@ msgstr ""
 
 #: openpilot/selfdrive/ui/mici/layouts/settings/ictoggles.py
 msgid "fingerprint"
+msgstr ""
+
+#: openpilot/selfdrive/ui/mici/layouts/settings/initial_cruise_speed.py
+msgid "initial max speed"
+msgstr ""
+
+#: openpilot/selfdrive/ui/mici/layouts/settings/initial_cruise_speed.py
+msgid "KPH"
+msgstr ""
+
+#: openpilot/selfdrive/ui/mici/layouts/settings/initial_cruise_speed.py
+msgid "MPH"
+msgstr ""
+
+#: openpilot/selfdrive/ui/mici/layouts/settings/initial_cruise_speed.py
+msgid ""
+"Max speed when engaging openpilot.\n"
+"If you are already driving faster, your current speed is used.\n"
+"Resume restores the previous max speed."
+msgstr ""
+
+#: openpilot/selfdrive/ui/mici/layouts/settings/initial_cruise_speed.py
+msgid "kph"
 msgstr ""
 
 #: openpilot/selfdrive/ui/mici/layouts/settings/network/esim_ui.py
@@ -1015,20 +1052,15 @@ msgid "Failed to get available branches. Ensure you're connected to the internet
 msgstr ""
 
 #: openpilot/selfdrive/ui/mici/layouts/settings/toggles.py
+msgid "following distance"
+msgstr ""
+
+#: openpilot/selfdrive/ui/mici/layouts/settings/toggles.py
 msgid ""
 "Standard is recommended.\n"
 "Aggressive follows closer, with firmer gas and braking.\n"
 "Relaxed leaves more space.\n"
 "Use the steering wheel distance button on supported cars."
-msgstr ""
-
-#: openpilot/selfdrive/ui/mici/layouts/settings/toggles.py
-msgid ""
-"Let the driving model control gas and brakes.\n"
-"Includes stopping for red lights and stop signs.\n"
-"Set speed is a maximum, not a target.\n"
-"These are alpha features. Expect mistakes.\n"
-"The path colors show acceleration and braking."
 msgstr ""
 
 #: openpilot/selfdrive/ui/mici/layouts/settings/toggles.py
@@ -1061,20 +1093,6 @@ msgstr ""
 #: openpilot/selfdrive/ui/onroad/hud_renderer.py
 #: openpilot/selfdrive/ui/sunnypilot/onroad/hud_renderer.py
 msgid "MAX"
-msgstr ""
-
-#: openpilot/selfdrive/ui/mici/onroad/hud_renderer.py
-#: openpilot/selfdrive/ui/onroad/hud_renderer.py
-#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/cruise_sub_layouts/speed_limit_settings.py
-#: openpilot/selfdrive/ui/sunnypilot/onroad/speed_renderer.py
-msgid "km/h"
-msgstr ""
-
-#: openpilot/selfdrive/ui/mici/onroad/hud_renderer.py
-#: openpilot/selfdrive/ui/onroad/hud_renderer.py
-#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/cruise_sub_layouts/speed_limit_settings.py
-#: openpilot/selfdrive/ui/sunnypilot/onroad/speed_renderer.py
-msgid "mph"
 msgstr ""
 
 #: openpilot/selfdrive/ui/mici/widgets/dialog.py
@@ -1176,14 +1194,6 @@ msgstr ""
 
 #: openpilot/selfdrive/ui/sunnypilot/layouts/settings/cruise.py
 msgid "Long Press Increment"
-msgstr ""
-
-#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/cruise.py
-msgid "Enable Dynamic Experimental Control"
-msgstr ""
-
-#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/cruise.py
-msgid "Enable toggle to allow the model to determine when to use sunnypilot ACC or sunnypilot End to End Longitudinal."
 msgstr ""
 
 #: openpilot/selfdrive/ui/sunnypilot/layouts/settings/cruise.py
@@ -1565,6 +1575,11 @@ msgstr ""
 
 #: openpilot/selfdrive/ui/sunnypilot/layouts/settings/models.py
 msgid "{} will drive when the chestnut is ready."
+msgstr ""
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/models.py
+#: openpilot/selfdrive/ui/sunnypilot/mici/layouts/models.py
+msgid "canceling..."
 msgstr ""
 
 #: openpilot/selfdrive/ui/sunnypilot/layouts/settings/models.py
@@ -2616,14 +2631,6 @@ msgstr ""
 msgid "Near"
 msgstr ""
 
-#: openpilot/selfdrive/ui/widgets/exp_mode_button.py
-msgid "EXPERIMENTAL MODE ON"
-msgstr ""
-
-#: openpilot/selfdrive/ui/widgets/exp_mode_button.py
-msgid "CHILL MODE ON"
-msgstr ""
-
 #: openpilot/selfdrive/ui/widgets/offroad_alerts.py
 msgid "Close"
 msgstr ""
@@ -2965,15 +2972,15 @@ msgid "Chestnut detected! Switch to the %1 branch to use chestnut-class models."
 msgstr ""
 
 #: openpilot/selfdrive/selfdrived/alerts_offroad.json
-msgid "Chestnut not detected. Check USB and 12V connections."
+msgid "Chestnut model error. Restart the car to retry."
 msgstr ""
 
 #: openpilot/selfdrive/selfdrived/alerts_offroad.json
-msgid "Chestnut overheated. Ensure good airflow. Current GPU temperature is %1."
+msgid "Chestnut not detected. Check USB and 12V connections, then restart the car."
 msgstr ""
 
 #: openpilot/selfdrive/selfdrived/alerts_offroad.json
-msgid "Chestnut model not compiled. Keep ignition on and reboot the comma."
+msgid "Chestnut overheated. Ensure good airflow."
 msgstr ""
 
 #: openpilot/selfdrive/selfdrived/alerts_offroad.json
@@ -2985,18 +2992,18 @@ msgid "Chestnut USB link is slow. Check the USB cable. The current speed is %1."
 msgstr ""
 
 #: openpilot/system/hardware/chestnut/status.py
-msgid "Chestnut GPU unavailable. PCIe link is not up. Check the GPU is securely seated."
+msgid "Chestnut GPU unavailable. Check the GPU is securely seated, then restart the car."
 msgstr ""
 
 #: openpilot/system/hardware/chestnut/status.py
-msgid "Chestnut power restored. 12V is stable again, cycle ignition."
+msgid "Chestnut power restored. Restart the car to retry."
 msgstr ""
 
 #: openpilot/system/hardware/chestnut/status.py
-msgid "Chestnut power disconnected. Check 12V connection, then cycle ignition."
+msgid "Chestnut power disconnected. Check the 12V connection, then restart the car."
 msgstr ""
 
 #: openpilot/system/hardware/chestnut/status.py
-msgid "Chestnut power lost. Possibly caused by an engine-crank voltage drop. Check 12V connection, then cycle ignition."
+msgid "Chestnut power lost. Check the 12V connection, then restart the car."
 msgstr ""
 
