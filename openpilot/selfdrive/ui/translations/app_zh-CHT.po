@@ -113,6 +113,11 @@ msgid "Actuator Delay:"
 msgstr "致動器延遲："
 
 #: openpilot/selfdrive/ui/sunnypilot/layouts/settings/models.py
+#: openpilot/selfdrive/ui/sunnypilot/mici/layouts/models.py
+msgid "Adds a gentle nudge toward lane center on top of the model's own steering, stronger when lane lines are clear. Yields around obstacles. Not available with the Default model."
+msgstr "在模型原有轉向上加入輕微的車道置中修正；車道線清晰時修正較強，遇到障礙物時會減弱介入。預設模型不支援此功能。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/models.py
 msgid "Adjust Camera Offset"
 msgstr "調整攝影機偏移"
 
@@ -275,6 +280,10 @@ msgstr "大模型暫時無法使用，將於下次行車時重試。"
 #: openpilot/selfdrive/ui/sunnypilot/layouts/settings/models.py
 msgid "Big model unavailable, {} is driving until the next drive."
 msgstr "大模型無法使用，本次行車改用 {}。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/models.py
+msgid "Blendful (Alpha)"
+msgstr "Blendful（Alpha）"
 
 #: openpilot/selfdrive/ui/sunnypilot/layouts/settings/steering_sub_layouts/lane_change_settings.py
 msgid "Block Lane Change: Road Edge Detection"
@@ -796,6 +805,10 @@ msgstr "啟用自訂的短按與長按級距，用於調整巡航速度。"
 #: openpilot/selfdrive/ui/layouts/settings/toggles.py
 msgid "Enable driver monitoring even when sunnypilot is not engaged."
 msgstr "即使 sunnypilot 未控制車輛，也持續啟用駕駛監控。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/vehicle/brands/toyota.py
+msgid "Enable smoother longitudinal control for TSS2 vehicles. Uses a custom speed-dependent integral gain curve for smoother traffic driving."
+msgstr "為 TSS2 車輛啟用較平順的縱向控制。使用隨車速變化的自訂積分增益曲線，改善車流中的駕駛平順性。"
 
 #: openpilot/selfdrive/ui/sunnypilot/layouts/settings/sunnylink.py
 msgid "Enable sunnylink"
@@ -1843,6 +1856,10 @@ msgstr "選擇分支"
 msgid "Select a language"
 msgstr "選擇語言"
 
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/models.py
+msgid "Select a non-Default model to use Blendful."
+msgstr "請選擇非預設模型以使用 Blendful。"
+
 #: openpilot/selfdrive/ui/sunnypilot/layouts/settings/vehicle/platform_selector.py
 msgid "Select a vehicle"
 msgstr "選擇車型"
@@ -2076,6 +2093,10 @@ msgstr "溫度"
 msgid "THANKS ♥"
 msgstr "謝謝 ♥"
 
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/vehicle/brands/toyota.py
+msgid "TSS2 Smooth Longitudinal (Alpha)"
+msgstr "TSS2 平順縱向控制（Alpha）"
+
 #: openpilot/selfdrive/ui/layouts/settings/software.py
 msgid "Target Branch"
 msgstr "目標分支"
@@ -2105,6 +2126,7 @@ msgid "This feature defaults to ON, and does not allow selection due to vehicle 
 msgstr "此功能因車輛限制而固定開啟，無法變更。"
 
 #: openpilot/selfdrive/ui/sunnypilot/layouts/settings/vehicle/brands/subaru.py
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/vehicle/brands/toyota.py
 msgid "This feature is currently not available on this platform."
 msgstr "此平台目前無法使用此功能。"
 
@@ -2524,6 +2546,10 @@ msgstr "大模型"
 msgid "big models"
 msgstr "大模型"
 
+#: openpilot/selfdrive/ui/sunnypilot/mici/layouts/models.py
+msgid "blendful (alpha)"
+msgstr "Blendful（Alpha）"
+
 #: openpilot/selfdrive/ui/mici/layouts/settings/software.py
 msgid "branch"
 msgstr "分支"
@@ -2575,6 +2601,10 @@ msgstr "copyparty 服務"
 #: openpilot/selfdrive/ui/mici/layouts/settings/icfingerprint.py
 msgid "current fingerprint"
 msgstr "目前車輛指紋"
+
+#: openpilot/selfdrive/ui/sunnypilot/mici/layouts/models.py
+msgid "custom model only"
+msgstr "僅限自訂模型"
 
 #: openpilot/system/ui/widgets/network.py
 msgid "default"
