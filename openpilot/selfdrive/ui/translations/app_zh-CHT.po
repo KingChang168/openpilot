@@ -3238,7 +3238,7 @@ msgstr "自動車道置中已關閉"
 
 #: openpilot/sunnypilot/selfdrive/selfdrived/events.py
 msgid "Manual Steering Required"
-msgstr "請手動控制方向盤"
+msgstr "請接手方向盤"
 
 #: openpilot/sunnypilot/selfdrive/selfdrived/events.py
 msgid "Smart/Adaptive Cruise Control: OFF"
