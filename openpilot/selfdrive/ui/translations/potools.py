@@ -233,8 +233,6 @@ def extract_strings(files: list[str], basedir: str) -> list[POEntry]:
       is_flagged = name in ('tr', 'trn')
 
       if name in ('tr', 'tr_noop'):
-        if name == 'tr' and (not node.args or not isinstance(node.args[0], ast.Constant)):
-          continue
         if not node.args or (msgid := _static_string(node.args[0])) is None:
           continue
         if msgid in seen:
@@ -246,8 +244,6 @@ def extract_strings(files: list[str], basedir: str) -> list[POEntry]:
 
       elif name == 'trn':
         if len(node.args) < 2:
-          continue
-        if not all(isinstance(arg, ast.Constant) for arg in node.args[:2]):
           continue
         msgid, msgid_plural = _static_string(node.args[0]), _static_string(node.args[1])
         if msgid is None or msgid_plural is None:
@@ -281,6 +277,20 @@ def extract_offroad_strings(basedir: str | Path) -> list[POEntry]:
     if isinstance(node, ast.Constant) and isinstance(node.value, str) and node.value.startswith("Chestnut "):
       sources[node.value] = status_file
   return [POEntry(msgid=text, source_refs=[source]) for text, source in sources.items()]
+
+
+def extract_runtime_alert_strings(basedir: str | Path) -> list[POEntry]:
+  """Collect literal alert text rendered through tr(), without importing control code."""
+  relative = 'openpilot/sunnypilot/selfdrive/selfdrived/events.py'
+  tree = ast.parse((Path(basedir) / relative).read_text(encoding='utf-8'))
+  seen = {}
+  for node in ast.walk(tree):
+    if not isinstance(node, ast.Call) or not isinstance(node.func, ast.Name) or node.func.id != 'Alert':
+      continue
+    for arg in node.args[:2]:
+      if (text := _static_string(arg)):
+        seen.setdefault(text, POEntry(msgid=text, source_refs=[relative]))
+  return list(seen.values())
 
 
 def _build_pot_header() -> POEntry:

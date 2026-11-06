@@ -3044,3 +3044,203 @@ msgstr ""
 #: openpilot/system/hardware/chestnut/status.py
 msgid "Chestnut power lost. Check the 12V connection, then restart the car."
 msgstr ""
+
+#: openpilot/system/ui/tici_updater.py
+msgid "An operating system update is required. Connect your device to Wi-Fi for the fastest update experience. The download size is approximately 1GB."
+msgstr "需要更新作業系統。請將裝置連上 Wi-Fi，以加快更新速度。下載大小約為 1 GB。"
+
+#: openpilot/selfdrive/ui/layouts/settings/device.py
+msgid "sunnypilot is continuously calibrating, resetting is rarely required. Resetting calibration will restart sunnypilot if the car is powered on."
+msgstr "sunnypilot 會持續自動校正，通常不需要重設。若車輛電源已開啟，重設校正會重新啟動 sunnypilot。"
+
+#: openpilot/selfdrive/ui/layouts/settings/toggles.py
+msgid "Max speed when engaging openpilot. If you are already driving faster, your current speed is used. Resume restores the previous max speed. Changes apply the next time you engage."
+msgstr "啟用 openpilot 時使用的最高速度。若當時車速更高，則使用目前車速；恢復巡航時會沿用上次的最高速度。變更會在下次啟用時生效。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/onboarding.py
+msgid "sunnylink enables secured remote access to your comma device from anywhere, including settings management, remote monitoring, real-time dashboard, etc."
+msgstr "sunnylink 可讓您隨時隨地安全地遠端存取 comma 裝置，包括管理設定、遠端監看及即時儀表板等功能。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/onboarding.py
+msgid "sunnylink is designed to be enabled as part of sunnypilot's core functionality. If sunnylink is disabled, features such as settings management, remote monitoring, real-time dashboards will be unavailable."
+msgstr "sunnylink 是 sunnypilot 核心功能的一部分，設計上建議啟用。停用後將無法使用設定管理、遠端監看及即時儀表板等功能。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/developer.py
+msgid "Toggle visibility of advanced sunnypilot controls.<br>This only changes the visibility of the toggles; it does not change the actual enabled/disabled state."
+msgstr "顯示或隱藏 sunnypilot 進階控制項。<br>這只會改變控制項是否顯示，不會變更各功能的啟用或停用狀態。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/developer.py
+msgid "copyparty is a very capable file server, you can use it to download your routes, view your logs and even make some edits on some files from your browser. Requires you to connect to your comma locally via its IP address."
+msgstr "copyparty 是檔案伺服器，可讓您透過瀏覽器下載行車紀錄、查看記錄檔，甚至編輯部分檔案。您必須在區域網路中透過 comma 裝置的 IP 位址連線。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/developer.py
+msgid "When toggled on, this creates a prebuilt file to allow accelerated boot times. When toggled off, it removes the prebuilt file so compilation of locally edited cpp files can be made."
+msgstr "啟用後會建立 prebuilt 標記檔，以縮短開機時間。停用後會移除此標記檔，讓本機修改過的 C++ 檔案可重新編譯。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/display.py
+msgid "Apply a custom timeout for settings UI.<br>This is the time after which settings UI closes automatically if user is not interacting with the screen."
+msgstr "自訂設定介面的逾時時間。<br>若持續未操作螢幕，設定介面會在此時間後自動關閉。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/models.py
+msgid "Enable this for the car to learn and adapt its steering response time. Disable to use a fixed steering response time. Keeping this on provides the stock openpilot experience."
+msgstr "啟用後，車輛會學習並調整轉向反應時間；停用後則使用固定的轉向反應時間。保持啟用可維持原版 openpilot 的行為。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/models.py
+msgid "If you're driving at 20 mph (32 km/h) or below and have your blinker on, the car will plan a turn in that direction at the nearest drivable path. This prevents situations (like at red lights) where the car might plan the wrong turn direction."
+msgstr "當車速不超過 20 mph（32 km/h）且已開啟方向燈時，系統會在最近的可行駛路徑規劃朝該方向轉彎，避免在等紅燈等情況下規劃成錯誤的轉彎方向。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/osm.py
+msgid "Select Country"
+msgstr "選擇國家"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/osm.py
+msgid "Select State"
+msgstr "選擇州／省"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/osm.py
+msgid "Perform a search"
+msgstr "搜尋"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/steering.py
+msgid "Enable the beloved MADS feature. Disable toggle to revert back to stock sunnypilot engagement/disengagement."
+msgstr "啟用 MADS 功能。停用後，系統會恢復原版 sunnypilot 的啟用與解除控制行為。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/steering_sub_layouts/lane_change_settings.py
+msgid "Set a timer to delay the auto lane change operation when the blinker is used. No nudge on the steering wheel is required to auto lane change if a timer is set. Default is Nudge.<br>Please use caution when using this feature. Only use the blinker when traffic and road conditions permit."
+msgstr "設定打方向燈後開始自動變換車道的延遲時間。設定計時器後，無須輕推方向盤即可開始自動變換車道。預設為輕推確認。<br>請謹慎使用此功能，僅在交通及道路狀況允許時開啟方向燈。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/steering_sub_layouts/lane_change_settings.py
+msgid "Toggle to enable a delay timer for seamless lane changes when blind spot monitoring (BSM) detects a obstructing vehicle, ensuring safe maneuvering."
+msgstr "啟用後，盲點偵測（BSM）偵測到阻擋車輛時會使用延遲計時器，以協助安全地變換車道。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/steering_sub_layouts/torque_settings.py
+msgid "Looks ahead at planned steering to reduce sudden corrections, so the wheel moves more smoothly through turns. Works with Self-Tune and custom tuning. Thanks to @twilsonco for the implementation."
+msgstr "預先參考規劃中的轉向，減少突然修正，讓方向盤在彎道中轉動得更平順。可搭配自動調校與自訂調校使用。感謝 @twilsonco 實作此功能。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/steering_sub_layouts/torque_settings.py
+msgid "Enables self-tune for Torque lateral control for platforms that do not use Torque lateral control by default."
+msgstr "讓預設未使用扭力式橫向控制的平台，也能啟用扭力式橫向控制的自動調校。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/steering_sub_layouts/torque_settings.py
+msgid "Less strict settings when using Self-Tune. This allows torqued to be more forgiving when learning values."
+msgstr "放寬自動調校的條件，讓 torqued 在學習參數時採用較寬鬆的限制。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/steering_sub_layouts/torque_settings.py
+msgid "Enables custom tuning for Torque lateral control. Modifying Lateral Acceleration Factor and Friction below will override the offline values indicated in the YAML files within \"opendbc/car/torque_data\". The values will also be used live when \"Manual Real-Time Tuning\" toggle is enabled."
+msgstr "啟用扭力式橫向控制的自訂調校。修改下方的橫向加速度係數及摩擦值，會覆寫「opendbc/car/torque_data」內 YAML 檔案的離線參數；啟用「手動即時調校」後，這些值也會即時套用。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/steering_sub_layouts/torque_settings.py
+msgid "Enforces the torque lateral controller to use the fixed values instead of the learned values from Self-Tune. Enabling this toggle overrides Self-Tune values."
+msgstr "強制扭力式橫向控制器使用固定參數，而非自動調校學得的參數。啟用後會覆寫自動調校的參數。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/sunnylink.py
+msgid "Backing up {}%"
+msgstr "正在備份 {}%"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/sunnylink.py
+msgid "Restoring {}%"
+msgstr "正在還原 {}%"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/vehicle/brands/subaru.py
+msgid "Experimental feature to enable stop and go for Subaru Global models with manual handbrake. Models with electric parking brake should keep this disabled. Thanks to martinl for this implementation!"
+msgstr "實驗性功能：讓配備手動手煞車的 Subaru Global 車型支援走走停停。配備電子駐車煞車的車型應保持停用。感謝 martinl 實作此功能！"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/vehicle/brands/tesla.py
+msgid "Warning: May experience steering oscillations below {} {} during turns, recommend disabling this feature if you experience these."
+msgstr "警告：轉彎時，車速低於 {} {} 可能出現轉向搖擺；若遇到此情況，建議停用此功能。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/vehicle/brands/tesla.py
+msgid "Only works above {} {}."
+msgstr "僅在車速高於 {} {} 時生效。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/visuals.py
+msgid "Enabling this will display warnings when a vehicle is detected in your blind spot as long as your car has BSM supported."
+msgstr "若車輛支援盲點偵測（BSM），啟用後會在盲點內偵測到車輛時顯示警告。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/visuals.py
+msgid "A beautiful rainbow effect on the path the model wants to take. It does not affect driving in any way."
+msgstr "在模型規劃的行駛路徑上顯示彩虹效果，不會影響駕駛控制。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/visuals.py
+msgid "Displays the name of the road the car is traveling on.<br>The OpenStreetMap database of the location must be downloaded from the OSM panel to fetch the road name."
+msgstr "顯示車輛目前行駛的道路名稱。<br>必須先在 OSM 頁面下載所在地區的 OpenStreetMap 資料庫，才能取得道路名稱。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/visuals.py
+msgid "A chime and on-screen alert will play when the traffic light you are waiting for turns green and you have no vehicle in front of you.<br>Note: This chime is only designed as a notification. It is the driver's responsibility to observe their environment and make decisions accordingly."
+msgstr "等候的交通號誌轉綠且前方沒有車輛時，會播放提示音並顯示畫面提醒。<br>注意：此提示僅供通知，駕駛仍須自行觀察周遭環境並作出判斷。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/visuals.py
+msgid "A chime and on-screen alert will play when you are stopped, and the vehicle in front of you start moving.<br>Note: This chime is only designed as a notification. It is the driver's responsibility to observe their environment and make decisions accordingly."
+msgstr "車輛停止且前車開始移動時，會播放提示音並顯示畫面提醒。<br>注意：此提示僅供通知，駕駛仍須自行觀察周遭環境並作出判斷。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/visuals.py
+msgid "Show an indicator on the left side of the screen to display real-time vehicle acceleration and deceleration. This displays what the car is currently doing, not what the planner is requesting."
+msgstr "在畫面左側顯示車輛即時加減速指示。這反映的是車輛的實際動作，而非規劃器要求的動作。"
+
+#: openpilot/sunnypilot/selfdrive/selfdrived/events.py
+msgid "Automatic Lane Centering is OFF"
+msgstr "自動車道置中已關閉"
+
+#: openpilot/sunnypilot/selfdrive/selfdrived/events.py
+msgid "Manual Steering Required"
+msgstr "請手動控制方向盤"
+
+#: openpilot/sunnypilot/selfdrive/selfdrived/events.py
+msgid "Smart/Adaptive Cruise Control: OFF"
+msgstr "智慧／主動式巡航控制已關閉"
+
+#: openpilot/sunnypilot/selfdrive/selfdrived/events.py
+msgid "Manual Speed Control Required"
+msgstr "請自行控制車速"
+
+#: openpilot/sunnypilot/selfdrive/selfdrived/events.py
+msgid "Gear not D"
+msgstr "目前非 D 檔"
+
+#: openpilot/sunnypilot/selfdrive/selfdrived/events.py
+msgid "openpilot Unavailable"
+msgstr "openpilot 無法使用"
+
+#: openpilot/sunnypilot/selfdrive/selfdrived/events.py
+msgid ""
+"Reverse\n"
+"Gear"
+msgstr ""
+"倒車\n"
+"檔位"
+
+#: openpilot/sunnypilot/selfdrive/selfdrived/events.py
+msgid "Turning Left"
+msgstr "向左轉彎"
+
+#: openpilot/sunnypilot/selfdrive/selfdrived/events.py
+msgid "Turning Right"
+msgstr "向右轉彎"
+
+#: openpilot/sunnypilot/selfdrive/selfdrived/events.py
+msgid "Auto adjusting to speed limit"
+msgstr "正在自動調整至速限"
+
+#: openpilot/sunnypilot/selfdrive/selfdrived/events.py
+msgid "Set speed changed"
+msgstr "設定速度已變更"
+
+#: openpilot/sunnypilot/selfdrive/selfdrived/events.py
+msgid "Auto adjusting to last speed limit"
+msgstr "正在自動調整至上次速限"
+
+#: openpilot/sunnypilot/selfdrive/selfdrived/events.py
+msgid "Lane Change Unavailable: Road Edge"
+msgstr "無法變換車道：道路邊緣"
+
+#: openpilot/sunnypilot/selfdrive/selfdrived/events.py
+msgid "Big Model Ready"
+msgstr "大模型已就緒"
+
+#: openpilot/sunnypilot/selfdrive/selfdrived/events.py
+msgid "Blendful ON"
+msgstr "Blendful 已開啟"
+
+#: openpilot/sunnypilot/selfdrive/selfdrived/events.py
+msgid "Blendful OFF"
+msgstr "Blendful 已關閉"
