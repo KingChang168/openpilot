@@ -100,6 +100,10 @@ msgstr "全部期間"
 msgid "APN Setting"
 msgstr "APN 設定"
 
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/cruise.py
+msgid "Acceleration Boost"
+msgstr "加速增強"
+
 #: openpilot/selfdrive/ui/mici/layouts/settings/developer.py
 msgid "Access the device remotely using your SSH keys."
 msgstr "使用您的 SSH 金鑰遠端存取裝置。"
@@ -116,6 +120,10 @@ msgstr "致動器延遲："
 #: openpilot/selfdrive/ui/sunnypilot/mici/layouts/models.py
 msgid "Adds a gentle nudge toward lane center on top of the model's own steering, stronger when lane lines are clear. Yields around obstacles. Not available with the Default model."
 msgstr "在模型原有轉向上加入輕微的車道置中修正；車道線清晰時修正較強，遇到障礙物時會減弱介入。預設模型不支援此功能。"
+
+#: openpilot/selfdrive/ui/sunnypilot/layouts/settings/cruise.py
+msgid "Adds a small push on top of sunnypilot's own acceleration, stronger in Aggressive and gentler in Relaxed. Eases off in curves and when sunnypilot slows or stops. Never goes past your set speed, and lead-car following still comes first."
+msgstr "在 sunnypilot 原有的加速基礎上稍微增強推力，積極模式較強、輕鬆模式較柔和。彎道及系統減速或停車時會減弱，不會超過設定速度，並優先維持前車跟車距離。"
 
 #: openpilot/selfdrive/ui/sunnypilot/layouts/settings/models.py
 msgid "Adjust Camera Offset"
@@ -3091,3 +3099,4 @@ msgstr "將使用 {} 執行駕駛。若行車中發生錯誤，本次行車將�
 #: openpilot/selfdrive/ui/widgets/prime.py
 msgid "✓ SUBSCRIBED"
 msgstr "✓ 已訂閱"
+
