@@ -47,6 +47,8 @@ class TestTranslationExtraction(unittest.TestCase):
     self.assertTrue(all(e.msgstr or (e.msgstr_plural and all(e.msgstr_plural.values())) for e in entries))
 
   def test_placeholders_and_html_preserved(self):
+    _, template_entries = parse_po(PO.with_name('app.pot'))
+    self.assertTrue(all(not e.msgstr and not any(e.msgstr_plural.values()) for e in template_entries))
     def placeholders(text):
       return sorted([(name, spec, conv) for _, name, spec, conv in string.Formatter().parse(text) if name is not None])
     _, entries = parse_po(PO)
