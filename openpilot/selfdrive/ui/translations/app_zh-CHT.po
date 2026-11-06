@@ -3099,4 +3099,3 @@ msgstr "將使用 {} 執行駕駛。若行車中發生錯誤，本次行車將�
 #: openpilot/selfdrive/ui/widgets/prime.py
 msgid "✓ SUBSCRIBED"
 msgstr "✓ 已訂閱"
-
