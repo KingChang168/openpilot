@@ -74,10 +74,11 @@ class TestTraditionalChineseSync(unittest.TestCase):
 
   def test_offroad_alert_translates_before_substitution(self):
     with patch.object(lang, 'tr', side_effect=lambda text: self.translations.get(text, text)):
-      text = lang.translate_offroad_alert(
-        'Chestnut overheated. Ensure good airflow. Current GPU temperature is %1.', '85 °C')
-      assert '過熱' in text and '85 °C' in text and '%1' not in text
-      extra = 'Chestnut power restored. 12V is stable again, cycle ignition.'
+      alerts = json.loads((ROOT / 'openpilot/selfdrive/selfdrived/alerts_offroad.json').read_text())
+      template = alerts['Offroad_ChestnutUsbSlow']['text']
+      text = lang.translate_offroad_alert(template, '480 Mbps')
+      assert '連線速度過慢' in text and '480 Mbps' in text and '%1' not in text
+      extra = 'Chestnut power restored. Restart the car to retry.'
       assert lang.translate_offroad_alert('%1', extra) == self.translations[extra]
 
   def test_untranslated_alert_is_unchanged(self):

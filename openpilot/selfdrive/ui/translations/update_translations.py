@@ -3,7 +3,7 @@ from itertools import chain
 import os
 from openpilot.common.basedir import BASEDIR
 from openpilot.system.ui.lib.multilang import SYSTEM_UI_DIR, UI_DIR, TRANSLATIONS_DIR, multilang
-from openpilot.selfdrive.ui.translations.potools import extract_strings, extract_offroad_strings, generate_pot, merge_po, init_po
+from openpilot.selfdrive.ui.translations.potools import extract_strings, extract_offroad_strings, extract_runtime_alert_strings, generate_pot, merge_po, init_po
 
 LANGUAGES_FILE = os.path.join(str(TRANSLATIONS_DIR), "languages.json")
 POT_FILE = os.path.join(str(TRANSLATIONS_DIR), "app.pot")
@@ -24,7 +24,7 @@ def update_translations():
   # Extract translatable strings and generate .pot template
   entries = extract_strings(files, BASEDIR)
   seen = {entry.msgid: entry for entry in entries}
-  for entry in extract_offroad_strings(BASEDIR):
+  for entry in chain(extract_offroad_strings(BASEDIR), extract_runtime_alert_strings(BASEDIR)):
     if entry.msgid in seen:
       seen[entry.msgid].source_refs.extend(entry.source_refs)
     else:
