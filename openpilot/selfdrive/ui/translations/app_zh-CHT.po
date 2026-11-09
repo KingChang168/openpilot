@@ -2091,7 +2091,7 @@ msgstr "已觸發系統重設。按下「確認」以清除所有內容與設定
 
 #: openpilot/selfdrive/ui/onroad/alert_renderer.py
 msgid "TAKE CONTROL IMMEDIATELY"
-msgstr "請立刻接手控制"
+msgstr "請立即接手"
 
 #: openpilot/selfdrive/ui/layouts/sidebar.py
 msgid "TEMP"
@@ -3234,7 +3234,7 @@ msgstr "在畫面左側顯示車輛即時加減速指示。這反映的是車輛
 
 #: openpilot/sunnypilot/selfdrive/selfdrived/events.py
 msgid "Automatic Lane Centering is OFF"
-msgstr "自動車道置中已關閉"
+msgstr "置中已關閉"
 
 #: openpilot/sunnypilot/selfdrive/selfdrived/events.py
 msgid "Manual Steering Required"
@@ -3242,7 +3242,7 @@ msgstr "請接手方向盤"
 
 #: openpilot/sunnypilot/selfdrive/selfdrived/events.py
 msgid "Smart/Adaptive Cruise Control: OFF"
-msgstr "智慧／主動式巡航控制已關閉"
+msgstr "巡航已關閉"
 
 #: openpilot/sunnypilot/selfdrive/selfdrived/events.py
 msgid "Manual Speed Control Required"
@@ -3260,9 +3260,7 @@ msgstr "openpilot 無法使用"
 msgid ""
 "Reverse\n"
 "Gear"
-msgstr ""
-"倒車\n"
-"檔位"
+msgstr "倒車"
 
 #: openpilot/sunnypilot/selfdrive/selfdrived/events.py
 msgid "Turning Left"
@@ -3299,3 +3297,51 @@ msgstr "Blendful 已開啟"
 #: openpilot/sunnypilot/selfdrive/selfdrived/events.py
 msgid "Blendful OFF"
 msgstr "Blendful 已關閉"
+
+#: openpilot/selfdrive/selfdrived/events.py
+msgid "Changing Lanes"
+msgstr "變道中"
+
+#: openpilot/selfdrive/selfdrived/events.py
+msgid "Steer Left"
+msgstr "向左打方向"
+
+#: openpilot/selfdrive/selfdrived/events.py
+msgid "Confirm Lane Change"
+msgstr "確認變道"
+
+#: openpilot/selfdrive/selfdrived/events.py
+msgid "Steer Right"
+msgstr "向右打方向"
+
+#: openpilot/selfdrive/selfdrived/events.py
+msgid "Car in Blindspot"
+msgstr "盲點有車"
+
+#: openpilot/selfdrive/selfdrived/events.py
+msgid "Reverse"
+msgstr "倒車"
+
+#: openpilot/selfdrive/selfdrived/events.py
+msgid "Pay Attention"
+msgstr "注意路況"
+
+#: openpilot/selfdrive/selfdrived/events.py
+msgid "Driver Distracted"
+msgstr "駕駛分心"
+
+#: openpilot/selfdrive/selfdrived/events.py
+msgid "Press Resume"
+msgstr "按恢復鍵"
+
+#: openpilot/selfdrive/selfdrived/events.py
+msgid "take control"
+msgstr "請接手"
+
+#: openpilot/selfdrive/selfdrived/events.py
+msgid "turn exceeds limit"
+msgstr "轉彎超出限制"
+
+#: openpilot/sunnypilot/selfdrive/selfdrived/events_base.py
+msgid "openpilot will disengage"
+msgstr "輔助將解除"

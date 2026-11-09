@@ -3242,3 +3242,51 @@ msgstr ""
 #: openpilot/sunnypilot/selfdrive/selfdrived/events.py
 msgid "Blendful OFF"
 msgstr ""
+
+#: openpilot/selfdrive/selfdrived/events.py
+msgid "Changing Lanes"
+msgstr ""
+
+#: openpilot/selfdrive/selfdrived/events.py
+msgid "Steer Left"
+msgstr ""
+
+#: openpilot/selfdrive/selfdrived/events.py
+msgid "Confirm Lane Change"
+msgstr ""
+
+#: openpilot/selfdrive/selfdrived/events.py
+msgid "Steer Right"
+msgstr ""
+
+#: openpilot/selfdrive/selfdrived/events.py
+msgid "Car in Blindspot"
+msgstr ""
+
+#: openpilot/selfdrive/selfdrived/events.py
+msgid "Reverse"
+msgstr ""
+
+#: openpilot/selfdrive/selfdrived/events.py
+msgid "Pay Attention"
+msgstr ""
+
+#: openpilot/selfdrive/selfdrived/events.py
+msgid "Driver Distracted"
+msgstr ""
+
+#: openpilot/selfdrive/selfdrived/events.py
+msgid "Press Resume"
+msgstr ""
+
+#: openpilot/selfdrive/selfdrived/events.py
+msgid "take control"
+msgstr ""
+
+#: openpilot/selfdrive/selfdrived/events.py
+msgid "turn exceeds limit"
+msgstr ""
+
+#: openpilot/sunnypilot/selfdrive/selfdrived/events_base.py
+msgid "openpilot will disengage"
+msgstr ""
