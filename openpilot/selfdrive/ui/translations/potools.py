@@ -290,6 +290,22 @@ def extract_runtime_alert_strings(basedir: str | Path) -> list[POEntry]:
     for arg in node.args[:2]:
       if (text := _static_string(arg)):
         seen.setdefault(text, POEntry(msgid=text, source_refs=[relative]))
+  # These audited C4 warnings also reach the renderer through selfdriveState.
+  # Keep this scope explicit rather than importing every platform's alert catalog.
+  for relative, texts in {
+    'openpilot/selfdrive/selfdrived/events.py': (
+      'Changing Lanes', 'Steer Left', 'Confirm Lane Change', 'Steer Right', 'Car in Blindspot', 'Reverse',
+      'Pay Attention', 'Driver Distracted', 'Press Resume', 'take control', 'turn exceeds limit',
+    ),
+    'openpilot/sunnypilot/selfdrive/selfdrived/events_base.py': ('openpilot will disengage',),
+  }.items():
+    path = Path(basedir) / relative
+    if path.exists():
+      literals = {node.value for node in ast.walk(ast.parse(path.read_text(encoding='utf-8')))
+                  if isinstance(node, ast.Constant) and isinstance(node.value, str)}
+      for text in texts:
+        if text in literals:
+          seen.setdefault(text, POEntry(msgid=text, source_refs=[relative]))
   return list(seen.values())
 
 

@@ -74,10 +74,22 @@ class TestTranslationExtraction(unittest.TestCase):
   def test_runtime_alert_catalog_is_complete(self):
     _, entries = parse_po(PO)
     translations = {e.msgid: e.msgstr for e in entries}
-    for entry in extract_runtime_alert_strings(ROOT):
+    runtime_entries = extract_runtime_alert_strings(ROOT)
+    for entry in runtime_entries:
       self.assertTrue(translations.get(entry.msgid), entry.msgid)
     self.assertEqual(translations['Blendful ON'], 'Blendful 已開啟')
     self.assertEqual(translations['Blendful OFF'], 'Blendful 已關閉')
+
+    c4_alerts = {
+      'Changing Lanes', 'Steer Left', 'Steer Right', 'Confirm Lane Change',
+      'Car in Blindspot', 'Reverse', 'openpilot will disengage',
+      'Pay Attention', 'Driver Distracted', 'Press Resume', 'take control', 'turn exceeds limit',
+    }
+    _, template = parse_po(PO.with_name('app.pot'))
+    self.assertLessEqual(c4_alerts, {e.msgid for e in runtime_entries})
+    self.assertLessEqual(c4_alerts, {e.msgid for e in template})
+    self.assertEqual(translations['TAKE CONTROL IMMEDIATELY'], '請立即接手')
+    self.assertEqual(translations['Manual Steering Required'], '請接手方向盤')
 
   def test_readable_dynamic_templates(self):
     _, entries = parse_po(PO)
